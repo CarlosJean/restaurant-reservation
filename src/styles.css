@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Fonts */
+@font-face{
+    font-family: 'great-vibes';
+    src: url("./assets/fonts/Great_Vibes/GreatVibes-Regular.ttf")
+}
+
+@font-face{
+    font-family: 'balsamiq_sans';
+    src: url("./assets/fonts/Balsamiq_Sans/BalsamiqSans-Regular.ttf")
+}
+/* Fonts */
+
+/* General */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+/* General */
+
+/* Body */
+body{
+    height: 100vh;
+}
+/* Body */
+

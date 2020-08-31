@@ -1,0 +1,39 @@
+:host{
+    width: 100%;
+    background-image: url("/assets/bodyIV.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#dvSearch {
+    /* background: white; */
+    background-color: #ffffffe8;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding: 2%;
+    margin-top: 1%;
+    border-radius: 10px;
+}
+
+#dvSearchTitle{
+    font-family: 'balsamiq_sans';
+    text-align: center;
+    font-size: 2vw;
+}
+
+#slcCity{
+    width: 100%;
+}
+
+#dvRestaurants {
+    background-color: #ffffffe8;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 1% 0px;
+    padding: 2%;
+    border-radius: 10px;
+    /* height: 300px; */
+}
+
+/* nz-card button{
+    margin-top: 5%;
+} */
+

@@ -1,0 +1,100 @@
+<div nz-row nzJustify="center">   
+    <div nz-col id="dvSearch" nzSpan="12">
+        <div nz-row nzJustify="center">
+            <div nz-col id="dvSearchTitle">¿Dónde deseas reservar?</div>            
+        </div>
+        <div nz-row nzJustify="center" nzGutter="12">
+            <div nz-col nzSm="24" nzMd="12">
+                <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                    <input type="text" nz-input placeholder="Ej. Little Caesar San Isidro" />
+                  </nz-input-group>
+                  <ng-template #suffixIconButton>
+                    <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+                  </ng-template>
+            </div>
+            <div nz-col nzSm="24" nzMd="12">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione una ciudad" id="slcCity">
+                    <nz-option nzLabel="Santo Domingo" nzValue="santo_domingo"></nz-option>
+                    <nz-option nzLabel="New York" nzValue="new_york"></nz-option>
+                    <nz-option nzLabel="Buenos Aires" nzValue="buenos_aires"></nz-option>
+                  </nz-select>
+            </div>
+        </div>
+    </div>
+    <div nz-col id="dvRestaurants" nzSpan="23">
+        <div nz-row [nzGutter]="[16, 24]">
+            <div nz-col nzSm="12" nzMd="6">
+                <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
+                    <nz-card-meta nzTitle="Las Tablas Colombian Steak House" nzDescription="2942 N Lincoln Ave, Chicago"></nz-card-meta>
+                    <nz-rate  [nzCount]="5" [ngModel]="3" nzDisabled></nz-rate>
+                </nz-card>
+                <ng-template #coverTemplate>
+                    <img alt="example" src="https://www.opentable.com/img/restimages/107257.jpg" />
+                </ng-template>
+            </div>
+            <div nz-col nzSm="12" nzMd="6">
+                <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
+                    <nz-card-meta nzTitle="Las Tablas Colombian Steak House" nzDescription="2942 N Lincoln Ave, Chicago"></nz-card-meta>
+                    <nz-rate  [nzCount]="5" [ngModel]="3" nzDisabled></nz-rate>
+                </nz-card>
+                <ng-template #coverTemplate>
+                    <img alt="example" src="https://www.opentable.com/img/restimages/107257.jpg" />
+                </ng-template>
+            </div>
+            <div nz-col nzSm="12" nzMd="6">
+                <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
+                    <nz-card-meta nzTitle="Las Tablas Colombian Steak House" nzDescription="2942 N Lincoln Ave, Chicago"></nz-card-meta>
+                    <nz-rate  [nzCount]="5" [ngModel]="3" nzDisabled></nz-rate>
+                </nz-card>
+                <ng-template #coverTemplate>
+                    <img alt="example" src="https://www.opentable.com/img/restimages/107257.jpg" />
+                </ng-template>
+            </div>
+            <div nz-col nzSm="12" nzMd="6">
+                <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
+                    <nz-card-meta nzTitle="Las Tablas Colombian Steak House" nzDescription="2942 N Lincoln Ave, Chicago"></nz-card-meta>
+                    <nz-rate  [nzCount]="5" [ngModel]="3" nzDisabled></nz-rate>
+                </nz-card>
+                <ng-template #coverTemplate>
+                    <img alt="example" src="https://www.opentable.com/img/restimages/107257.jpg" />
+                </ng-template>
+            </div>
+            <div nz-col nzSm="12" nzMd="6">
+                <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
+                    <nz-card-meta nzTitle="Las Tablas Colombian Steak House" nzDescription="2942 N Lincoln Ave, Chicago"></nz-card-meta>
+                    <nz-rate  [nzCount]="5" [ngModel]="3" nzDisabled></nz-rate>
+                </nz-card>
+                <ng-template #coverTemplate>
+                    <img alt="example" src="https://www.opentable.com/img/restimages/107257.jpg" />
+                </ng-template>
+            </div>
+            <div nz-col nzSm="12" nzMd="6">
+                <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
+                    <nz-card-meta nzTitle="Las Tablas Colombian Steak House" nzDescription="2942 N Lincoln Ave, Chicago"></nz-card-meta>
+                    <nz-rate  [nzCount]="5" [ngModel]="3" nzDisabled></nz-rate>
+                </nz-card>
+                <ng-template #coverTemplate>
+                    <img alt="example" src="https://www.opentable.com/img/restimages/107257.jpg" />
+                </ng-template>
+            </div>
+            <div nz-col nzSm="12" nzMd="6">
+                <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
+                    <nz-card-meta nzTitle="Las Tablas Colombian Steak House" nzDescription="2942 N Lincoln Ave, Chicago"></nz-card-meta>
+                    <nz-rate  [nzCount]="5" [ngModel]="3" nzDisabled></nz-rate>
+                </nz-card>
+                <ng-template #coverTemplate>
+                    <img alt="example" src="https://www.opentable.com/img/restimages/107257.jpg" />
+                </ng-template>
+            </div>
+            <div nz-col nzSm="12" nzMd="6">
+                <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
+                    <nz-card-meta nzTitle="Las Tablas Colombian Steak House" nzDescription="2942 N Lincoln Ave, Chicago"></nz-card-meta>
+                    <nz-rate  [nzCount]="5" [ngModel]="3" nzDisabled></nz-rate>
+                </nz-card>
+                <ng-template #coverTemplate>
+                    <img alt="example" src="https://www.opentable.com/img/restimages/107257.jpg" />
+                </ng-template>
+            </div>
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,41 @@
+:host{
+    background-image: url(/assets/bodyIII.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dvRestaurantData {
+	background: #ffffffe8;
+	border-radius: 10px;
+	margin-top: 5%;
+	height: 450px;
+}
+
+.restaurantImg {
+	position: absolute;
+	top: -55px;
+	left: 4%;
+	height: 25%;
+	box-shadow: 0px 2px 10px black;
+	border-radius: 10px;
+	width: 15%;
+}
+
+.dvRestaurantData p{
+    margin-left: 25%;
+}
+
+#restaurantName{
+    font-size: 25px;
+}
+
+#map{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+#mapRow {
+    height: 68%;
+}

@@ -1,0 +1,13 @@
+<div nz-row nzJustify="end" id="headerRow">
+    <div nz-col nzSpan="23" id="logo"><p>Restaurant Reservation</p></div>
+    <div nz-col nzSpan="1" id="userIcon">
+        <fa-icon [icon]="faUser" nz-button nz-popover nzPopoverTrigger="click" [nzPopoverContent]="contentTemplate">
+        </fa-icon>
+        <ng-template #contentTemplate id="popOverContent">
+            <ul id="ulUserPopOver">
+                <li><a>Registrarse</a></li>
+                <li><a>Acceder</a></li>
+            </ul>
+        </ng-template>        
+    </div>
+</div>
