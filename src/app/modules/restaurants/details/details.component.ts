@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { faCoins } from '@fortawesome/free-solid-svg-icons';
+//import { faFont } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faReceipt } from '@fortawesome/free-solid-svg-icons';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+/*import { faCoffee } from '@fortawesome/free-solid-svg-icons'; */
 
 @Component({
   selector: 'app-details',
@@ -7,6 +13,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
+  faMoneyBillAlt = faCoins
+  faMapMarkerAlt = faMapMarkerAlt;
+  faReceipt = faReceipt;
+  faPhone = faPhone;
+  //faCoffee = faCoffee
   constructor() { }
 
   ngOnInit(): void {

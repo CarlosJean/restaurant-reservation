@@ -1,3 +1,32 @@
+/* Responsive breakpoints */
+@media only screen and (max-width: 1024px) {
+
+	.restaurantImg {
+		top: -40px !important;
+		left: 2% !important;
+		height: 25% !important;
+		width: 20% !important;
+	}
+
+	:host{
+		background:blue;
+	}
+}
+
+@media only screen and (max-width:768px){
+	.restaurantImg{
+		top: -27px !important;
+		left: 2% !important;
+		height: 20% !important;
+		width: 20% !important;
+	}
+
+	#logo{
+		font-size: 4vw;
+	}
+}
+/* Responsive breakpoints */
+
 :host{
     background-image: url(/assets/bodyIII.png);
     width: 100%;
@@ -6,10 +35,11 @@
 }
 
 .dvRestaurantData {
-	background: #ffffffe8;
+	background: #001529cf;
 	border-radius: 10px;
 	margin-top: 5%;
-	height: 450px;
+	height: 350px;
+	color: white;
 }
 
 .restaurantImg {
@@ -26,16 +56,31 @@
     margin-left: 25%;
 }
 
-#restaurantName{
-    font-size: 25px;
+#restaurantName {
+	font-size: 25px;	
+}
+
+#restaurantName button{
+	margin-right: 2%;;
 }
 
 #map{
     width: 100%;
-    height: 100%;
+    height: 90%;
     border-radius: 10px;
 }
 
 #mapRow {
     height: 68%;
+}
+
+#priceRate{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2%;
+}
+
+#contact{
+	display: flex; 
+	justify-content: space-evenly;
 }

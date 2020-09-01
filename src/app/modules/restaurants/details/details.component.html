@@ -3,14 +3,17 @@
         <img src="https://www.opentable.com/img/restimages/116272.jpg" class="restaurantImg">            
         <div nz-row>
             <div nz-col nzSpan="24">
-                <p><nz-rate  [nzCount]="5" [ngModel]="3" [nzAllowHalf]=true nzDisabled></nz-rate></p>
-            </div>
-            <div nz-col nzSpan="24">
                 <p id="restaurantName"><strong>XO Prime Steaks Pepper Pike</strong></p>
             </div>
-            <div nz-col nzSpan="24">
-                <p id="restaurantAddress">29425 Chagrin Blvd Pepper Pike 44122 US</p>
+            <div nz-col nzSpan=24>
+                <p id="contact"><fa-icon [icon]="faPhone" style="color:white;"></fa-icon> 7738712414 <fa-icon [icon]="faMapMarkerAlt" style="color:red;"></fa-icon> 29425 Chagrin Blvd Pepper Pike 44122 US</p>
             </div>
+            <div nz-col nzSpan="24">
+                <p id="priceRate"><nz-rate  [nzCount]="5" [ngModel]="3.5" [nzAllowHalf]=true nzDisabled [nzCharacter]="moneyIcon"></nz-rate> <button nz-button nzType="primary" nzShape="round"><fa-icon [icon]="faReceipt" style="color:white; margin-right: 2%;"></fa-icon>&nbsp;Reservar</button></p>
+                <ng-template #moneyIcon>                    
+                    <fa-icon [icon]="faMoneyBillAlt"></fa-icon>
+                </ng-template>
+            </div>            
         </div>
         <div nz-row nzJustify="center" id="mapRow">
             <div nz-col nzSpan="24">
