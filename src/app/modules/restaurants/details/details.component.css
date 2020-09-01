@@ -1,29 +1,37 @@
 /* Responsive breakpoints */
 @media only screen and (max-width: 1024px) {
 
-	.restaurantImg {
-		top: -40px !important;
-		left: 2% !important;
-		height: 25% !important;
-		width: 20% !important;
-	}
-
-	:host{
-		background:blue;
-	}
+	#restaurantImg {
+        width: 90% !important;
+        top: -16% !important;
+        height: 45% !important;
+    }
 }
 
 @media only screen and (max-width:768px){
-	.restaurantImg{
-		top: -27px !important;
-		left: 2% !important;
-		height: 20% !important;
-		width: 20% !important;
+	#restaurantImg{
+		width: 90% !important;
+        top: -10% !important;
+        height: 30% !important;
 	}
+}
 
-	#logo{
-		font-size: 4vw;
-	}
+@media only screen and (max-width:766px){
+	#restaurantImg{
+        position: unset !important;
+        height: 100% !important;
+    }
+    
+    #dvRestaurantData{
+        margin-top: 0% !important;
+    }
+}
+
+@media only screen and (max-width:766px){
+    #dvBtnReserve button{
+        font-size: 10px !important;
+    }
+    
 }
 /* Responsive breakpoints */
 
@@ -34,30 +42,32 @@
     background-size: cover;
 }
 
+#dvContainer{
+    height: 100%;
+}
+
 .dvRestaurantData {
 	background: #001529cf;
 	border-radius: 10px;
-	margin-top: 5%;
-	height: 350px;
 	color: white;
 }
 
-.restaurantImg {
-	position: absolute;
-	top: -55px;
-	left: 4%;
-	height: 25%;
-	box-shadow: 0px 2px 10px black;
-	border-radius: 10px;
-	width: 15%;
+#dvRestaurantImage{
+    display: flex;
+    justify-content: center;
 }
 
-.dvRestaurantData p{
-    margin-left: 25%;
+#restaurantImg {
+	width: 95%;
+	position: relative;
+	top: -25%;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px black;
 }
 
 #restaurantName {
-	font-size: 25px;	
+    font-size: 25px;
+    text-align: center;	
 }
 
 #restaurantName button{
@@ -66,21 +76,25 @@
 
 #map{
     width: 100%;
-    height: 90%;
-    border-radius: 10px;
+    height: 100%;
+    border-radius: 0px 0px 10px 10px;
 }
 
-#mapRow {
-    height: 68%;
-}
-
-#priceRate{
+#dvBtnReserve {
 	display: flex;
-	justify-content: space-between;
-	margin-top: 2%;
+	justify-content: center;
 }
 
-#contact{
-	display: flex; 
-	justify-content: space-evenly;
+#dvBtnReserve button{
+    width: 50%;
+}
+
+#dvMap{
+    margin-top: 3%;
+}
+
+nz-modal  {
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
 }

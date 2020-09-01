@@ -1,0 +1,17 @@
+<form nz-form>
+    <nz-form-item nz-row>
+        <nz-form-label nz-col nzSpan=24>Cantidad de personas</nz-form-label>
+        <nz-form-control nz-col nzSpan=24>
+            <nz-input-number [nzMin]="1" [nzMax]="10" [nzStep]="1" nzPlaceHolder="Cantidad de personas" style="width: 100%;"></nz-input-number>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row>
+        <nz-form-label nz-col nzSpan=24>Fecha y hora</nz-form-label>
+        <nz-form-control>
+            <nz-input-group nzCompact>
+                <nz-date-picker nzFormat="dd-MM-yyyy" nzPlaceHolder="Seleccione una fecha" [nzDisabledDate]="disabledDate"></nz-date-picker>
+                <nz-time-picker nzFormat="HH:mm" nzPlaceHolder="Seleccione una hora"></nz-time-picker>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>   
+</form>

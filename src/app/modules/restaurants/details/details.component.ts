@@ -18,9 +18,23 @@ export class DetailsComponent implements OnInit {
   faReceipt = faReceipt;
   faPhone = faPhone;
   //faCoffee = faCoffee
+
+  reservationModalVisible:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  reservationModal():void{
+    this.reservationModalVisible = true;
+    console.log(this.reservationModalVisible);
+  }
+
+  handleOk():void{
+    this.reservationModalVisible = false;
+  }
+
+  handleCancel():void{
+    this.reservationModalVisible = false;
+  }
 }

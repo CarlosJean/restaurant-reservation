@@ -17,6 +17,11 @@ import { FooterComponent } from './shared/layout/footer/footer.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { LoginComponent } from './shared/components/login/login.component';
 
 registerLocaleData(en);
 
@@ -24,7 +29,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,11 @@ registerLocaleData(en);
     NzLayoutModule,
     NzIconModule,
     FontAwesomeModule,
-    NzPopoverModule
+    NzPopoverModule,
+    NzButtonModule,
+    NzModalModule,
+    NzFormModule,
+    NzInputModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

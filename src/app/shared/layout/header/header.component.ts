@@ -8,9 +8,23 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   faUser = faUser;
+  modalVisible:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showModal():void{
+    this.modalVisible = true;
+    console.log(this.modalVisible);
+  }
+
+  handleOk():void{
+    this.modalVisible = false
+  }
+
+  handleCancel():void{
+    this.modalVisible = false
   }
 
 }
