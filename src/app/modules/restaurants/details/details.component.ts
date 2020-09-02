@@ -4,6 +4,8 @@ import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faReceipt } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute } from '@angular/router';
+import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
 /*import { faCoffee } from '@fortawesome/free-solid-svg-icons'; */
 
 @Component({
@@ -20,9 +22,12 @@ export class DetailsComponent implements OnInit {
   //faCoffee = faCoffee
 
   reservationModalVisible:boolean = false;
-  constructor() { }
+  restaurant:any;
+
+  constructor(private restaurantService:RestaurantService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.findRestaurant();
   }
 
   reservationModal():void{
@@ -36,5 +41,13 @@ export class DetailsComponent implements OnInit {
 
   handleCancel():void{
     this.reservationModalVisible = false;
+  }
+
+  findRestaurant(){
+    this.activatedRoute.params.subscribe(params=>{
+      this.restaurantService.findRestaurant(params.id).subscribe(restaurant=>{
+        this.restaurant = restaurant;
+      });
+    });
   }
 }
