@@ -49,4 +49,10 @@ Thumbs.db
 /src/app/environments
 /src/app/environments/environment.ts
 /src/app/environments/environment.prod.ts
+src/app/environments
 src/environments/environment.ts
+src/environments/environment.prod.ts
+/src/environments/environment.prod.ts
+
+#gitignore
+gitignore
