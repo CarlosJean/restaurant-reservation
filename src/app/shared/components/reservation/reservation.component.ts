@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-reservation',
@@ -8,7 +10,14 @@ import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
 })
 export class ReservationComponent implements OnInit {
   today = new Date();
-  constructor() { }
+  reservationForm = new FormGroup({
+    people : new FormControl(),
+    date : new FormControl(),
+    time : new FormControl()
+  });
+  constructor(private firestore:AngularFirestore) { 
+    this.firebaseTest();
+  }
 
   ngOnInit(): void {
   }
@@ -18,4 +27,9 @@ export class ReservationComponent implements OnInit {
     return differenceInCalendarDays(current, this.today) < 0;
   };
 
+  firebaseTest(){
+    this.firestore.collection('reservation').valueChanges().subscribe(reservations=>{
+      console.log(reservations);
+    })
+  }
 }

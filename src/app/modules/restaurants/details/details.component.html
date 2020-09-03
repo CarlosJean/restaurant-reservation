@@ -2,7 +2,7 @@
     <div class="dvRestaurantData" nz-col nzSpan="12" >
         <div nz-row>
             <div nz-col nzSm=24 nzMd=4 id="dvRestaurantImage">
-                <img [src]="restaurant.image_url" id=restaurantImg>
+                <img [src]="restaurant.image_url" id=restaurantImg alt="{{restaurant.name}}">
             </div>
             <div nz-col nzSm=24 nzMd=20>
                 <div nz-row>
@@ -38,9 +38,39 @@
 </div>
 <!-- Reservation modal -->
 <nz-modal [(nzVisible)]="reservationModalVisible" nzTitle="Reservación de mesa" [nzClosable]=true [nzMaskClosable]=false (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" >
-   <ng-container *ngTemplateOutlet="reservationForm"></ng-container>
+   <ng-container *ngTemplateOutlet="reservation"></ng-container>
 </nz-modal>
-<ng-template #reservationForm>
-    <app-reservation></app-reservation>
+<ng-template #reservation>
+    <form nz-form [formGroup]="reservationForm">
+        <nz-form-item nz-row>
+            <nz-form-label nz-col nzSpan=24>Cantidad de personas</nz-form-label>
+            <nz-form-control nz-col nzSpan=24>
+                <nz-input-number 
+                [nzMin]="1" 
+                [nzMax]="10" 
+                [nzStep]="1" 
+                nzPlaceHolder="Cantidad de personas" 
+                style="width: 100%;"
+                formControlName="people"></nz-input-number>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row>
+            <nz-form-label nz-col nzSpan=24>Fecha y hora</nz-form-label>
+            <nz-form-control>
+                <nz-input-group nzCompact>
+                    <nz-date-picker 
+                    nzFormat="dd-MM-yyyy hh:mm" 
+                    nzPlaceHolder="Seleccione una fecha" 
+                    [nzDisabledDate]="disabledDate"
+                    formControlName="date"
+                    [nzShowTime]="{ nzDefaultOpenValue: timeDefaultValue }"></nz-date-picker>
+                    <!-- <nz-time-picker 
+                    nzFormat="h:mm a" 
+                    nzPlaceHolder="Seleccione una hora"
+                    formControlName="time"></nz-time-picker> -->
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>   
+    </form>
 </ng-template>
 <!-- Reservation modal -->  

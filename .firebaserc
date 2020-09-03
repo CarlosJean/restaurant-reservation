@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "auth-everything-6ef58": {
+      "hosting": {
+        "restaurant-reservation": [
+          "auth-everything-6ef58"
+        ]
+      }
+    }
+  }
+}

@@ -29,4 +29,6 @@ export class RestaurantService {
     let restaurantUrl= this.url+'/api/restaurants/'+id;
     return this.http.get(restaurantUrl);
   }
+
+  
 }

@@ -7,7 +7,9 @@ import { DetailsComponent } from './details/details.component';
 
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzRateModule } from 'ng-zorro-antd/rate';
-import { FormsModule } from '@angular/forms';
+/* Forms */
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+/* Forms */
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -24,8 +26,14 @@ import { AgmCoreModule } from '@agm/core';
 import { environment } from 'src/environments/environment';
 /* Google maps */
 
+/* Firebase */
+import { AngularFireModule } from '@angular/fire';
+import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
+import { ReservationService } from 'src/app/services/reservation/reservation.service';
+/* Firebase */
+
 @NgModule({
-  declarations: [RestaurantsComponent, DetailsComponent, ReservationComponent],
+  declarations: [RestaurantsComponent, DetailsComponent/* , ReservationComponent */],
   imports: [
     CommonModule,
     RestaurantsRoutingModule,
@@ -37,13 +45,20 @@ import { environment } from 'src/environments/environment';
     NzButtonModule,
     NzModalModule,
     NzFormModule,
+    ReactiveFormsModule,
     NzInputModule,
     NzInputNumberModule,
     NzDatePickerModule,
     NzTimePickerModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey
-    })
+    }),
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebase) 
+  ],
+  providers:[
+    RestaurantService,
+    ReservationService
   ]
 })
 export class RestaurantsModule { }
