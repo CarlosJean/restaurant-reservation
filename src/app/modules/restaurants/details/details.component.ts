@@ -47,6 +47,7 @@ export class DetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       this.restaurantService.findRestaurant(params.id).subscribe(restaurant=>{
         this.restaurant = restaurant;
+        console.log(this.restaurant);
       });
     });
   }

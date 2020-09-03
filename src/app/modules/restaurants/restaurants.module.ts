@@ -21,6 +21,7 @@ import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 
 /* Google maps */
 import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environment';
 /* Google maps */
 
 @NgModule({
@@ -40,9 +41,9 @@ import { AgmCoreModule } from '@agm/core';
     NzInputNumberModule,
     NzDatePickerModule,
     NzTimePickerModule,
-    /* AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAj-A-0rROmDoGlmMsELaxc54uKstFdJmY'
-    }) */
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleMapsApiKey
+    })
   ]
 })
 export class RestaurantsModule { }

@@ -4,40 +4,13 @@
             <div nz-col id="dvSearchTitle">¿Dónde deseas reservar?</div>            
         </div>
         <div nz-row nzJustify="center" nzGutter="12">
-            <div nz-col nzSm="24" nzMd="12">
+            <div nz-col nzSm="24" nzMd="24">
                 <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
                     <input #searchInput type="text" nz-input placeholder="Ej. Little Caesar San Isidro" (keyup.enter)="inputSearch($event.target.value)"/>
                 </nz-input-group>
                 <ng-template #suffixIconButton>
                     <button nz-button nzType="primary" (click)=inputSearch(searchInput.value) nzSearch><i nz-icon nzType="search"></i></button>
                 </ng-template>
-            </div>
-            <div nz-col nzSm="24" nzMd="12">
-                <!-- <nz-select 
-                nzServerSearch 
-                nzShowSearch 
-                nzAllowClear 
-                (nzScrollToBottom)="loadMore()" 
-                [nzDropdownRender]="renderTemplate"
-                nzPlaceHolder="Seleccione una ciudad" 
-                id="slcCity">
-
-                    <nz-option *ngFor="let city of optionList" [nzLabel]="city" [nzValue]="city"></nz-option>
-                  </nz-select>
-                  <ng-template #renderTemplate>
-                    <nz-spin *ngIf="isLoading"></nz-spin>
-                  </ng-template> -->
-                  <!-- <nz-select
-      nzShowSearch
-      nzServerSearch
-      nzPlaceHolder="input search text"      
-      [nzShowArrow]="false"
-      [nzFilterOption]="nzFilterOption"
-      (nzOnSearch)="search($event)"
-      style="width: 100%;"
-    >
-      <nz-option *ngFor="let o of cities" [nzLabel]="o" [nzValue]="o"> </nz-option>
-    </nz-select> -->
             </div>
         </div>
     </div>
@@ -46,7 +19,7 @@
         <nz-spin [nzSize]="'large'" nzSimple [nzIndicator]="indicatorTemplate" *ngIf="loading"> </nz-spin>
 
         <div nz-row [nzGutter]="[16, 24]">
-            <div nz-col nzSm="12" nzMd="6" *ngFor="let restaurant of restaurants | paginate: { itemsPerPage: 8, currentPage: p}">
+            <div nz-col nzSm="12" nzMd="6" *ngFor="let restaurant of restaurants | paginate: { itemsPerPage: 8, currentPage: p}" class="height-20">
                 <a [routerLink]="['/restaurants/details/',restaurant.id]">
                     <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
                         <nz-card-meta nzTitle="{{restaurant.name}}" nzDescription="{{restaurant.address}}, {{restaurant.city}} {{restaurant.postal_code}}"></nz-card-meta>
@@ -64,7 +37,7 @@
             nz-col nzSpan=12
             autoHide="true"
             responsive="true"
-            previousLabel="Previo"
+            previousLabel="Anterior"
             nextLabel="Siguiente"></pagination-controls>
         </div>
     </div> 

@@ -2,7 +2,7 @@
     <div class="dvRestaurantData" nz-col nzSpan="12" >
         <div nz-row>
             <div nz-col nzSm=24 nzMd=4 id="dvRestaurantImage">
-                <img src="{{restaurant.image_url}}" id=restaurantImg>
+                <img [src]="restaurant.image_url" id=restaurantImg>
             </div>
             <div nz-col nzSm=24 nzMd=20>
                 <div nz-row>
@@ -11,7 +11,7 @@
                     </div>
                     <div nz-col nzSpan=24>
                         <div nz-row>
-                            <div nz-col nzSm=24 nzMd=12><fa-icon [icon]="faPhone" style="color:white;"></fa-icon><a href="tel:{{restaurant.phone}}">{{restaurant.phone}}</a></div>
+                            <div nz-col nzSm=24 nzMd=12><fa-icon [icon]="faPhone" style="color:white;"></fa-icon><a href="tel:{{restaurant.phone}}" id="phone">{{restaurant.phone}}</a></div>
                             <div nz-col nzSm=24 nzMd=12>
                                 <fa-icon [icon]="faMapMarkerAlt" style="color:red;"></fa-icon> {{restaurant.address}}, {{restaurant.city}} {{restaurant.postal_code}}
                             </div>
@@ -29,10 +29,9 @@
                 </div>
             </div>
             <div nz-col nzSpan=24 id="dvMap">
-                <!-- <agm-map [latitude]="restaurant.lat" [longitude]="restaurant.lng">
+                <agm-map [zoom]=15 [latitude]="restaurant.lat" [longitude]="restaurant.lng">
                     <agm-marker [latitude]="restaurant.lat" [longitude]="restaurant.lng"></agm-marker>
-                  </agm-map> -->
-                <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7566.8042528985015!2d-69.82102431946801!3d18.51072158462207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf865bacfdecab%3A0xc239ee6608c3e2b9!2sInvivienda%2C%20Santo%20Domingo%20Este!5e0!3m2!1ses-419!2sdo!4v1598902754454!5m2!1ses-419!2sdo" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                  </agm-map>                
             </div>
         </div>
     </div> 
