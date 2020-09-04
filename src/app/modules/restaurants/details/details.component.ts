@@ -26,6 +26,8 @@ import { Validators } from '@angular/forms';
 import setHours from 'date-fns/setHours';
 /* Date */
 
+
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -51,15 +53,14 @@ export class DetailsComponent implements OnInit {
     creationDate:null,
     reservationDate:null,
     people:1,
-    reservationNumber:null,
     restaurantId:null,
-    userId:null
+    //userId:null
   };
   /* Reservation model */  
 
 
   reservationForm = new FormGroup({
-    people : new FormControl('',Validators.required),
+    people : new FormControl(this.reservation.people,Validators.required),
     date : new FormControl(this.date,Validators.required)
   });
 
@@ -70,10 +71,6 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.findRestaurant();
-    //console.log(this.reservationService.findLastId());
-    /* this.reservationService.findLastId().subscribe(data=>{
-      
-    }); */
   }
 
   reservationModal():void{
@@ -87,13 +84,11 @@ export class DetailsComponent implements OnInit {
     /* Model binding */
     let people = this.reservationForm.value.people;
     let date = this.reservationForm.value.date.getTime();
-
-    //this.reservation.id = this.firestore.createId();
-    this.reservation.creationDate = new Date().getTime();
+    
     this.reservation.reservationDate = date;
     this.reservation.people = people;
     this.activatedRoute.params.subscribe(params=>{
-      this.reservation.restaurantId = params.id //<-- Verificar
+      this.reservation.restaurantId = params.id;
     });    
     /* Model binding */  
 

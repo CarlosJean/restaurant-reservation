@@ -28,9 +28,13 @@ import { environment } from 'src/environments/environment';
 
 /* Firebase */
 import { AngularFireModule } from '@angular/fire';
+/* Firebase */
+
+/* Services */
 import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
-/* Firebase */
+/* Services */
+
 
 @NgModule({
   declarations: [RestaurantsComponent, DetailsComponent/* , ReservationComponent */],
