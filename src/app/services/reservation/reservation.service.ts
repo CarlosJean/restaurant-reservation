@@ -24,12 +24,10 @@ export class ReservationService {
 
     reservation.creationDate = new Date().getTime();
     reservation.userId = 1; //<--verificar
-    let restaurant = this.restaurantService.findRestaurant(reservation.restaurantId).subscribe(restaurant=>{
-      console.log(restaurant);
-    });
-    if(restaurant.closed){
+    this.restaurantService.findRestaurant(reservation.restaurantId).subscribe(restaurant=>{
+      reservation.restaurant = restaurant;
       this.createReservation(reservation);  
-    }
+    });
 
   }
 

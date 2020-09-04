@@ -25,7 +25,7 @@ export class RestaurantService {
     return this.http.get(restaurantsUrl);
   }
 
-  findRestaurant(id:number){
+  findRestaurant(id:number):Observable<any>{
     let restaurantUrl= this.url+'/api/restaurants/'+id;
     return this.http.get(restaurantUrl);
   }
