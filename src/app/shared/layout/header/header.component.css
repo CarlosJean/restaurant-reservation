@@ -1,3 +1,8 @@
+:host{
+min-height: 80px;
+background: rgb(9, 9, 31);
+}
+
 #logo{
 	font-family: 'great-vibes';
 	color: white;

@@ -11,13 +11,20 @@ import { environment } from 'src/environments/environment';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 /* Firebase */
 
+/* ng Zorro */
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzListModule } from 'ng-zorro-antd/list';
+/* ng Zorro */
+
 @NgModule({
   declarations: [ReservationsComponent, MyReservationsComponent],
   imports: [
     CommonModule,
     ReservationsRoutingModule,
     AngularFireModule,
-    AngularFireModule.initializeApp(environment.firebase) 
+    AngularFireModule.initializeApp(environment.firebase),
+    NzGridModule,
+    NzListModule 
   ],
   providers:[
     ReservationService

@@ -1,0 +1,39 @@
+:host{
+    width: 100%;
+    background-image: url("/assets/bodyIV.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+#container{
+    height: 100%;
+}
+
+#dvReservationsList{
+    height: 95%;
+    background: #001529cf;
+    border-radius: 10px;   
+    overflow: auto; 
+}
+
+#dvReservationsList nz-list {
+    color: white;
+    font-size:16px
+}
+
+#restaurantName{
+    font-weight: bold;
+}
+
+.listMarker{
+    background: red;
+    height: 100%;
+}
+
+nz-list-item a{
+    /* text-decoration: none; */
+    color: white;
+    /* height: 100%;
+    width: 100%; */
+}

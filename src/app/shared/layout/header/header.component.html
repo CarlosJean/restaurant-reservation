@@ -1,9 +1,20 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<div nz-row nzJustify="end" id="headerRow">
-    <div nz-col nzSpan="20" id="logo"><p><a [routerLink]="['/home']">Restaurant Reservation</a></p></div>
-    <div nz-col nzSpan="4">
-        <button nz-button nzType="default" (click)="showModal()" nzGhost>Acceder</button>
+<div nz-row nzJustify="center" nzAlign=middle id="headerRow" style="height: 100%;">
+    <div nz-col nzSm=24 nzMd=18>
+        <a id="logo" [routerLink]="['/home']">Restaurant Reservation</a>
     </div>
+    <div nz-col nzSm=24 nzMd=6>
+        <div nz-row nzJustify=space-around>
+            <label nz-col nz-span=6><a [routerLink]="['/home']">Inicio</a></label>
+            <label nz-col nz-span=6><a [routerLink]="['/reservation/my-reservations']">Mis reservaciones</a></label>
+            <div nz-col nz-span=6>
+                <button nz-button nzType="default" (click)="showModal()" nzGhost>Acceder</button>
+            </div>
+            <div nz-col nz-span=6>
+                <button nz-button nzType="default" (click)="showModal()" nzGhost>Registrarse</button>
+            </div>
+        </div>
+    </div>  
 </div>
 
 <nz-modal [(nzVisible)]="modalVisible" nzTitle="Acceso" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" nzMaskClosable=false>
