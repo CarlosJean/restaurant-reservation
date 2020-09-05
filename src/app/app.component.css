@@ -6,3 +6,7 @@ nz-content{
 	display: flex;
 }
 
+nz-header {
+	display: table;
+	width: 100%;
+}

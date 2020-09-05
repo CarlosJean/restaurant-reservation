@@ -1,13 +1,14 @@
 :host{
-min-height: 80px;
-background: rgb(9, 9, 31);
+/* min-height: 80px;
+background: rgb(9, 9, 31); */
+width: 100%;
 }
 
 #logo{
 	font-family: 'great-vibes';
 	color: white;
 	text-align: center;
-	font-size: 2vw;
+	font-size: 1vw;
 	font-weight: 400;
 	letter-spacing: 0.467em;
 }

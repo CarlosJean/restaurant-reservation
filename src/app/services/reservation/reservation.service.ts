@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 /* SweetAlert */
-import swal from 'sweetalert';
-import { map } from 'rxjs/operators';
+/* import swal from 'sweetalert'; */
+import Swal from 'sweetalert2'
+/* import { map } from 'rxjs/operators'; */
 import { Observable } from 'rxjs';
 import { RestaurantService } from '../restaurant/restaurant.service';
 /* SweetAlert */
@@ -38,8 +39,8 @@ export class ReservationService {
     .doc(reservation.id)
     .set(reservation)
     .then(()=>{
-      swal({
-        text:`Felicidades! Su reservación ha sido registrada.`,
+      Swal.fire({
+        html:`Felicidades! Su reservación ha sido registrada.<a href="/reservation/my-reservations">Ver mis reservaciones</a>.`,
         icon:'success'
       });
 
@@ -52,7 +53,7 @@ export class ReservationService {
     })
     .catch(error=>{
       console.error(error);
-      swal({
+      Swal.fire({
         text:`Disculpe, tuvimos un inconveniente al registrar su reservación. Intentelo más tarde`,
         icon:'error'
       });

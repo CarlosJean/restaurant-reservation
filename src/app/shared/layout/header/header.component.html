@@ -1,27 +1,32 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<div nz-row nzJustify="center" nzAlign=middle id="headerRow" style="height: 100%;">
-    <div nz-col nzSm=24 nzMd=18>
+<!-- Header -->
+<div nz-row nzJustify="center" nzAlign=middle id="headerRow">
+    <div nz-col nzSm=24 nzMd=8>
         <a id="logo" [routerLink]="['/home']">Restaurant Reservation</a>
     </div>
-    <div nz-col nzSm=24 nzMd=6>
-        <div nz-row nzJustify=space-around>
-            <label nz-col nz-span=6><a [routerLink]="['/home']">Inicio</a></label>
-            <label nz-col nz-span=6><a [routerLink]="['/reservation/my-reservations']">Mis reservaciones</a></label>
-            <div nz-col nz-span=6>
+    <div nz-col nzSm=24 nzMd=16>
+        <div nz-row nzJustify=end>
+            <label nz-col nzSm=6 nzMd=4><a [routerLink]="['/home']">Inicio</a></label>
+            <label nz-col nzSm=6 nzMd=4><a [routerLink]="['/reservation/my-reservations']">Mis reservaciones</a></label>
+            <label nz-col nzSm=6 nzMd=4><a href=#>Registrarse</a></label>
+            <div nz-col nzSm=6 nzMd=4>
                 <button nz-button nzType="default" (click)="showModal()" nzGhost>Acceder</button>
             </div>
-            <div nz-col nz-span=6>
+            <!-- <div nz-col nzSm=6 nzMd=3>
                 <button nz-button nzType="default" (click)="showModal()" nzGhost>Registrarse</button>
-            </div>
+            </div> -->
         </div>
     </div>  
 </div>
+<!-- Header -->
 
+<!-- Modal del login -->
 <nz-modal [(nzVisible)]="modalVisible" nzTitle="Acceso" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" nzMaskClosable=false>
     <ng-container *ngTemplateOutlet="loginForm"></ng-container>
 </nz-modal>
-
 <ng-template #loginForm>
     <app-login></app-login>
 </ng-template>
+<!-- Modal del login -->
+
 
