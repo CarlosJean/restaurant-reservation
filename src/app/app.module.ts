@@ -22,6 +22,14 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { LoginComponent } from './shared/components/login/login.component';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase';
+
+/* Firebase */
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+/* Firebase */
+
 
 registerLocaleData(en);
 
@@ -46,9 +54,11 @@ registerLocaleData(en);
     NzButtonModule,
     NzModalModule,
     NzFormModule,
-    NzInputModule
+    NzInputModule,
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebase) 
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US },AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

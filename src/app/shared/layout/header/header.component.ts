@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 
 @Component({
   selector: 'app-header',
@@ -27,4 +29,5 @@ export class HeaderComponent implements OnInit {
     this.modalVisible = false
   }
 
+  
 }
