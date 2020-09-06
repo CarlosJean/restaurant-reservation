@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -24,14 +22,7 @@ export class HeaderComponent implements OnInit {
   showModal():void{
     this.modalVisible = true;
   }
-
-  handleOk():void{
-    this.modalVisible = false
-  }
-
-  handleCancel():void{
-    this.modalVisible = false
-  }
+  
 
   logOut(){
     this.authService.logout().then(()=>{
@@ -43,9 +34,9 @@ export class HeaderComponent implements OnInit {
     this.authService.verifySession().subscribe(data=>{
       if(data != null){
         this.userLogged = data.emailVerified;
-
+        
         if(this.userLogged){
-          this.handleCancel();
+          this.modalVisible = false;
         }
       }
     })

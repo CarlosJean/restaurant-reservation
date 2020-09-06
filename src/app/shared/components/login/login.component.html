@@ -1,4 +1,9 @@
-<form nz-form nzLayout="horizontal">
+<!-- Modal del login -->
+<nz-modal [(nzVisible)]="showModal" nzTitle="Acceso" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" nzMaskClosable=false>
+  <ng-container *ngTemplateOutlet="loginForm"></ng-container>
+</nz-modal>
+<ng-template #loginForm>
+  <form nz-form nzLayout="horizontal">
     <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
             <nz-input-group nzPrefixIcon="user">
@@ -15,3 +20,6 @@
     </nz-form-item >
   </form>
   <button nz-button (click)="googleAuth()">Google</button>
+</ng-template>
+<!-- Modal del login -->
+

@@ -76,11 +76,14 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.findRestaurant();
-    this.verifySession();
+    
   }
 
   reservationModal():void{
-    this.reservationModalVisible = true;
+    this.verifySession();
+    if(this.userLogged){
+      this.reservationModalVisible = true;
+    }
   }
 
   handleOk():void{
@@ -116,8 +119,9 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  verifySession():void{
+  private verifySession():void{
     this.authService.verifySession().subscribe(data=>{
+      this.userLogged = false;
       if(data != null){
         this.userLogged = data.emailVerified;
       }

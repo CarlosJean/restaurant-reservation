@@ -24,7 +24,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { LoginComponent } from './shared/components/login/login.component';
 
 /* Firebase */
-import { AngularFireAuth } from '@angular/fire/auth';
+/* import { AngularFireAuth } from '@angular/fire/auth'; */
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 /* import { auth } from 'firebase'; */

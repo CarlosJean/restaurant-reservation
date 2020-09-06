@@ -16,13 +16,9 @@
 </div>
 <!-- Header -->
 
-<!-- Modal del login -->
-<nz-modal [(nzVisible)]="modalVisible" nzTitle="Acceso" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" nzMaskClosable=false>
-    <ng-container *ngTemplateOutlet="loginForm"></ng-container>
-</nz-modal>
-<ng-template #loginForm>
-    <app-login></app-login>
-</ng-template>
-<!-- Modal del login -->
+<!-- Login modal -->
+<app-login [(showModal)]=modalVisible></app-login>
+<!-- Login modal -->
+
 
 
