@@ -24,6 +24,7 @@ import { Validators } from '@angular/forms';
 
 /* Date */
 import setHours from 'date-fns/setHours';
+import { AuthService } from 'src/app/services/auth/auth.service';
 /* Date */
 
 
@@ -58,6 +59,7 @@ export class DetailsComponent implements OnInit {
   };
   /* Reservation model */  
 
+  userLogged:boolean = false;
 
   reservationForm = new FormGroup({
     people : new FormControl(this.reservation.people,Validators.required),
@@ -67,10 +69,14 @@ export class DetailsComponent implements OnInit {
   reservationModalVisible:boolean = false;
   restaurant:any = {};
 
-  constructor (private restaurantService:RestaurantService,private reservationService:ReservationService, private activatedRoute:ActivatedRoute) {}
+  constructor (private restaurantService:RestaurantService,
+    private reservationService:ReservationService, 
+    private activatedRoute:ActivatedRoute,
+    private authService:AuthService) {}
 
   ngOnInit(): void {
     this.findRestaurant();
+    this.verifySession();
   }
 
   reservationModal():void{
@@ -110,5 +116,12 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  verifySession():void{
+    this.authService.verifySession().subscribe(data=>{
+      if(data != null){
+        this.userLogged = data.emailVerified;
+      }
+    })
+  }
   
 }

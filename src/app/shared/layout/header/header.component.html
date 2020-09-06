@@ -1,20 +1,16 @@
-<meta name="viewport" content="width=device-width, user-scalable=no">
+<!-- <meta name="viewport" content="width=device-width, user-scalable=no"> -->
 <!-- Header -->
 <div nz-row nzJustify="center" nzAlign=middle id="headerRow">
     <div nz-col nzSm=24 nzMd=8>
         <a id="logo" [routerLink]="['/home']">Restaurant Reservation</a>
     </div>
-    <div nz-col nzSm=24 nzMd=16>
-        <div nz-row nzJustify=end>
-            <label nz-col nzSm=6 nzMd=4><a [routerLink]="['/home']">Inicio</a></label>
-            <label nz-col nzSm=6 nzMd=4><a [routerLink]="['/reservation/my-reservations']">Mis reservaciones</a></label>
-            <label nz-col nzSm=6 nzMd=4><a href=#>Registrarse</a></label>
-            <div nz-col nzSm=6 nzMd=4>
-                <button nz-button nzType="default" (click)="showModal()" nzGhost>Acceder</button>
-            </div>
-            <!-- <div nz-col nzSm=6 nzMd=3>
-                <button nz-button nzType="default" (click)="showModal()" nzGhost>Registrarse</button>
-            </div> -->
+    <div nz-col nzSm=24 nzMd=16 id="menus">
+        <div nz-row nzJustify=end nzAlign=middle>
+            <a nz-col nzSm=6 nzMd=4 [routerLink]="['/home']">Inicio</a>
+            <a nz-col nzSm=6 nzMd=4 *ngIf="userLogged" [routerLink]="['/reservation/my-reservations']">Mis reservaciones</a>
+            <a nz-col nzSm=6 nzMd=4 *ngIf="!userLogged" href=#>Registrarse</a>
+            <a nz-col nzSm=6 nzMd=4 *ngIf="userLogged" (click)=logOut()>Cerrar Sesión</a>
+            <button nz-col nzSm=6 nzMd=4 nz-button nzType="default" (click)="showModal()" nzGhost *ngIf="!userLogged">Acceder</button>
         </div>
     </div>  
 </div>

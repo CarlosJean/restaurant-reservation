@@ -23,7 +23,6 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { LoginComponent } from './shared/components/login/login.component';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase';
 
 /* Firebase */
 import { AngularFireModule } from '@angular/fire';

@@ -1,6 +1,4 @@
 :host{
-/* min-height: 80px;
-background: rgb(9, 9, 31); */
 width: 100%;
 }
 
@@ -17,4 +15,14 @@ width: 100%;
 #logo p a {
 	text-decoration: none;
 	color: white;
+}
+
+#menus a{	
+	text-align: center;
+	color: white;
+	transition: 0.5s;
+}
+
+#menus a:hover{
+	background: #1890ff;
 }
