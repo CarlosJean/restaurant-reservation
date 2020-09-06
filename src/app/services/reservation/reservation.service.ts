@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 /* import { map } from 'rxjs/operators'; */
 import { Observable } from 'rxjs';
 import { RestaurantService } from '../restaurant/restaurant.service';
+import { AuthService } from '../auth/auth.service';
 /* SweetAlert */
 
 @Injectable({
@@ -14,7 +15,7 @@ import { RestaurantService } from '../restaurant/restaurant.service';
 export class ReservationService {
 
   collectionName = 'reservation';
-  constructor(private firestore:AngularFirestore,private restaurantService:RestaurantService) { }
+  constructor(private firestore:AngularFirestore,private restaurantService:RestaurantService,private authService:AuthService) { }
 
   
    add(reservation:any){        
@@ -24,11 +25,16 @@ export class ReservationService {
     /* Encontrar el id del documento */ 
 
     reservation.creationDate = new Date().getTime();
-    reservation.userId = 1; //<--verificar
-    this.restaurantService.findRestaurant(reservation.restaurantId).subscribe(restaurant=>{
-      reservation.restaurant = restaurant;
-      this.createReservation(reservation);  
-    });
+
+    this.authService.verifySession().subscribe(data=>{
+      reservation.userId = data.uid;
+
+      this.restaurantService.findRestaurant(reservation.restaurantId).subscribe(restaurant=>{
+        reservation.restaurant = restaurant;
+        this.createReservation(reservation);  
+      });
+      
+    });  
 
   }
 
@@ -60,8 +66,8 @@ export class ReservationService {
     });  
   }
 
-  reservations():Observable<any>{
-    return this.firestore.collection('reservation', ref => ref.orderBy('reservationDate', 'desc')).valueChanges();
+  reservations(userId):Observable<any>{
+    return this.firestore.collection('reservation', ref => ref.where('userId','==',userId).orderBy('reservationDate', 'desc')).valueChanges();
   }
 
 }

@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   faUser = faUser;
-  modalVisible:boolean = false;
+  isVisible:boolean = false;
 
   userLogged:boolean;
 
@@ -20,13 +20,14 @@ export class HeaderComponent implements OnInit {
   }
 
   showModal():void{
-    this.modalVisible = true;
+    this.isVisible = true;
   }
   
 
   logOut(){
     this.authService.logout().then(()=>{
       this.userLogged = false;
+      this.isVisible = false;
     });
   }
 
@@ -36,10 +37,14 @@ export class HeaderComponent implements OnInit {
         this.userLogged = data.emailVerified;
         
         if(this.userLogged){
-          this.modalVisible = false;
+          this.isVisible = false;
         }
       }
     })
+  }
+
+  onModalClosed(){
+    this.isVisible = false;
   }
   
 }

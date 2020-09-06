@@ -69,20 +69,23 @@ export class DetailsComponent implements OnInit {
   reservationModalVisible:boolean = false;
   restaurant:any = {};
 
+  modalVisible:boolean = false;
+
   constructor (private restaurantService:RestaurantService,
     private reservationService:ReservationService, 
     private activatedRoute:ActivatedRoute,
     private authService:AuthService) {}
 
   ngOnInit(): void {
-    this.findRestaurant();
-    
+    this.findRestaurant();    
   }
 
   reservationModal():void{
     this.verifySession();
+    this.modalVisible = true;
     if(this.userLogged){
       this.reservationModalVisible = true;
+      this.modalVisible = false;
     }
   }
 
@@ -124,8 +127,12 @@ export class DetailsComponent implements OnInit {
       this.userLogged = false;
       if(data != null){
         this.userLogged = data.emailVerified;
+        this.modalVisible = false;
       }
     })
   }
   
+  onModalClosed(){
+    this.modalVisible = false;
+  }
 }

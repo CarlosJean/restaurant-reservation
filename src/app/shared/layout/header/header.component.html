@@ -17,7 +17,7 @@
 <!-- Header -->
 
 <!-- Login modal -->
-<app-login [(showModal)]=modalVisible></app-login>
+<app-login [modalVisible]=isVisible (modalClosed)="onModalClosed()"></app-login>
 <!-- Login modal -->
 
 

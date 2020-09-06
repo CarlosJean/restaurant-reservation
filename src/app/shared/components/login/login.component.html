@@ -1,5 +1,5 @@
 <!-- Modal del login -->
-<nz-modal [(nzVisible)]="showModal" nzTitle="Acceso" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" nzMaskClosable=false>
+<nz-modal [nzVisible]="modalVisible" nzTitle="Acceso" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" nzMaskClosable=true nzClosable=true>
   <ng-container *ngTemplateOutlet="loginForm"></ng-container>
 </nz-modal>
 <ng-template #loginForm>

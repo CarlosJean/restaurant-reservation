@@ -33,12 +33,14 @@ import { AngularFireModule } from '@angular/fire';
 /* Services */
 import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
+import { SharedModule } from 'src/app/shared/shared.module';
+/* import { LoginComponent } from 'src/app/shared/components/login/login.component'; */
 /* import { LoginComponent } from 'src/app/shared/components/login/login.component'; */
 /* Services */
 
 
 @NgModule({
-  declarations: [RestaurantsComponent, DetailsComponent/* , ReservationComponent */],
+  declarations: [RestaurantsComponent, DetailsComponent/* ,LoginComponent *//* , ReservationComponent */],
   imports: [
     CommonModule,
     RestaurantsRoutingModule,
@@ -58,8 +60,10 @@ import { ReservationService } from 'src/app/services/reservation/reservation.ser
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey
     }),
-    AngularFireModule,
-    AngularFireModule.initializeApp(environment.firebase) 
+    /* AngularFireModule, */
+    AngularFireModule.initializeApp(environment.firebase),
+    /* SharedModule */
+    SharedModule 
   ],
   providers:[
     RestaurantService,

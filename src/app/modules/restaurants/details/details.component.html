@@ -72,5 +72,5 @@
 <!-- Reservation modal --> 
 
 <!-- Login modal -->
-<app-login [(showModal)]=!userLogged></app-login>
+<app-login [modalVisible]=modalVisible (modalClosed)="onModalClosed()"></app-login>
 <!-- Login modal -->
