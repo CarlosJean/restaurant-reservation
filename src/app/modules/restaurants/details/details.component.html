@@ -38,9 +38,9 @@
 </div>
 <!-- Reservation modal -->
 <nz-modal [(nzVisible)]="reservationModalVisible" nzTitle="Reservación de mesa" [nzClosable]=true [nzMaskClosable]=false (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" >
-   <ng-container *ngTemplateOutlet="reservation"></ng-container>
+   <ng-container *ngTemplateOutlet="reservationTemplate"></ng-container>   
 </nz-modal>
-<ng-template #reservation>
+<ng-template #reservationTemplate>    
     <form nz-form [formGroup]="reservationForm">
         <nz-form-item nz-row>
             <nz-form-label nz-col nzSpan=24>Cantidad de personas</nz-form-label>
@@ -64,15 +64,9 @@
                     [nzDisabledDate]="disabledDate"
                     formControlName="date"
                     [nzShowTime]="{ nzDefaultOpenValue: timeDefaultValue }"></nz-date-picker>
-                    <!-- <nz-time-picker 
-                    nzFormat="h:mm a" 
-                    nzPlaceHolder="Seleccione una hora"
-                    formControlName="time"></nz-time-picker> -->
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>   
     </form>
 </ng-template>
 <!-- Reservation modal --> 
-<!--  -->
-<!--  -->

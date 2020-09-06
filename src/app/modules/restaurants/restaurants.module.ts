@@ -33,6 +33,7 @@ import { AngularFireModule } from '@angular/fire';
 /* Services */
 import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
+/* import { LoginComponent } from 'src/app/shared/components/login/login.component'; */
 /* Services */
 
 
