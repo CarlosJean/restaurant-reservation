@@ -15,30 +15,34 @@ import { HeaderComponent } from '../../layout/header/header.component';
 })
 export class LoginComponent implements OnInit { 
 
-  @Input() modalVisible:boolean;
-  @Output() modalClosed = new EventEmitter<boolean>();
+  @Input() isVisible:boolean;
+  @Output() toggle = new EventEmitter<boolean>();
   
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.modalVisible = false;
+    this.isVisible = false;
   }  
 
   handleOk(): void {    
-    this.modalVisible = false;
-    this.modalClosed.emit(this.modalVisible);
+    this.toggle.emit(false);
   }
 
   handleCancel(): void {    
-    this.modalVisible = false;
-    this.modalClosed.emit(this.modalVisible);
+    this.toggle.emit(false);
   }
 
   googleAuth():void{
-    this.authService.googleAuth(); 
+    this.authService.authPersistence().then(()=>{
+      this.authService.googleAuth().then((userData)=>{
+        if(userData.user.uid != null){
+          this.handleOk();
+        }
+      }).catch(error=>{
+        console.error(error)
+      })
+    }).catch(error=>{
+      console.error(error);
+    });
   }  
-
-  ngOnDestroy() {
-    console.log('Login destroyed!');
- }
 }

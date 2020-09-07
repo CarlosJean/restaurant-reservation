@@ -17,7 +17,7 @@ import { NzListModule } from 'ng-zorro-antd/list';
 /* ng Zorro */
 
 @NgModule({
-  declarations: [ReservationsComponent, MyReservationsComponent],
+  declarations: [/* ReservationsComponent, */ MyReservationsComponent],
   imports: [
     CommonModule,
     ReservationsRoutingModule,

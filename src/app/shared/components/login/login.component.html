@@ -1,5 +1,5 @@
 <!-- Modal del login -->
-<nz-modal [nzVisible]="modalVisible" nzTitle="Acceso" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" nzMaskClosable=true nzClosable=true>
+<nz-modal [nzVisible]="isVisible" nzTitle="Acceso" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" nzMaskClosable=false>
   <ng-container *ngTemplateOutlet="loginForm"></ng-container>
 </nz-modal>
 <ng-template #loginForm>
@@ -7,14 +7,14 @@
     <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
             <nz-input-group nzPrefixIcon="user">
-              <input type="text" nz-input placeholder="Correo electrónico" />
+              <input type="text" nz-input placeholder="Correo electrónico" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"/>
             </nz-input-group>
         </nz-form-control>
     </nz-form-item >
     <nz-form-item>
         <nz-form-control nzErrorTip="Please input your Password!">
             <nz-input-group nzPrefixIcon="lock">
-              <input type="password" nz-input placeholder="Contraseña" />
+              <input type="password" nz-input placeholder="Contraseña" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}"/>
             </nz-input-group>
           </nz-form-control>
     </nz-form-item >

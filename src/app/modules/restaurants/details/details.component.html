@@ -24,7 +24,7 @@
                         </ng-template>                                               
                     </div>
                     <div nz-col nzSpan=24 id="dvBtnReserve">
-                        <button nz-button nzType="primary" nzShape="round" (click)="reservationModal()"><fa-icon [icon]="faReceipt" style="color:white; margin-right: 2%;"></fa-icon>&nbsp;Reservar</button>
+                        <button nz-button nzType="primary" nzShape="round" (click)="toggleReservationModal()"><fa-icon [icon]="faReceipt" style="color:white; margin-right: 2%;"></fa-icon>&nbsp;Reservar</button>
                     </div>            
                 </div>
             </div>
@@ -36,41 +36,11 @@
         </div>
     </div> 
 </div>
-<!-- Reservation modal -->
-<nz-modal [(nzVisible)]="reservationModalVisible" nzTitle="Reservación de mesa" [nzClosable]=true [nzMaskClosable]=false (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" >
-   <ng-container *ngTemplateOutlet="reservationTemplate"></ng-container>   
-</nz-modal>
-<ng-template #reservationTemplate>    
-    <form nz-form [formGroup]="reservationForm">
-        <nz-form-item nz-row>
-            <nz-form-label nz-col nzSpan=24>Cantidad de personas</nz-form-label>
-            <nz-form-control nz-col nzSpan=24>
-                <nz-input-number 
-                [nzMin]="1" 
-                [nzMax]="10" 
-                [nzStep]="1" 
-                nzPlaceHolder="Cantidad de personas" 
-                style="width: 100%;"
-                formControlName="people"></nz-input-number>
-            </nz-form-control>
-        </nz-form-item>
-        <nz-form-item nz-row>
-            <nz-form-label nz-col nzSpan=24>Fecha y hora</nz-form-label>
-            <nz-form-control>
-                <nz-input-group nzCompact>
-                    <nz-date-picker 
-                    nzFormat="dd-MM-yyyy hh:mm" 
-                    nzPlaceHolder="Seleccione una fecha" 
-                    [nzDisabledDate]="disabledDate"
-                    formControlName="date"
-                    [nzShowTime]="{ nzDefaultOpenValue: timeDefaultValue }"></nz-date-picker>
-                </nz-input-group>
-            </nz-form-control>
-        </nz-form-item>   
-    </form>
-</ng-template>
-<!-- Reservation modal --> 
+
+<!-- Reservation Modal -->
+<app-reservation [isVisible]=reservationModalVisible (toggle)=toggleReservationModal($event)></app-reservation>
+<!-- Reservation Modal -->
 
 <!-- Login modal -->
-<app-login [modalVisible]=modalVisible (modalClosed)="onModalClosed()"></app-login>
+<app-login [isVisible]=loginModalVisible (toggle)="toggleLoginModal($event)"></app-login>
 <!-- Login modal -->

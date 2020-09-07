@@ -26,10 +26,11 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 /* Firebase */
 /* import { AngularFireAuth } from '@angular/fire/auth'; */
 import { AngularFireModule } from '@angular/fire';
-import { environment } from 'src/environments/environment';
-import { SharedModule } from './shared/shared.module';
 /* import { auth } from 'firebase'; */
 /* Firebase */
+
+import { environment } from 'src/environments/environment';
+import { SharedModule } from './shared/shared.module';
 
 
 registerLocaleData(en);
@@ -43,7 +44,7 @@ registerLocaleData(en);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    /* FormsModule, */
     HttpClientModule,
     BrowserAnimationsModule,
     /* NzGridModule, */
@@ -55,8 +56,8 @@ registerLocaleData(en);
     /* NzModalModule, */
     /* NzFormModule,
     NzInputModule, */
-    AngularFireModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    /* AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebase), */
     SharedModule 
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }/* ,AngularFireAuth */],

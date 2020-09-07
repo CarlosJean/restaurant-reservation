@@ -10,24 +10,18 @@ import { ActivatedRoute } from '@angular/router';
 
 /* Services */
 import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
-import { ReservationService } from 'src/app/services/reservation/reservation.service';
+/* import { ReservationService } from 'src/app/services/reservation/reservation.service'; */
 /* Services */
 
-/* Form */
-import { FormGroup, FormControl } from '@angular/forms';
-import { Validators } from '@angular/forms';
-/* Form */
+
 
 /* Models */
 //import {ReservationModel} from '../../../models/reservationModel/reservation-model';
 /* Models */
 
 /* Date */
-import setHours from 'date-fns/setHours';
 import { AuthService } from 'src/app/services/auth/auth.service';
 /* Date */
-
-
 
 @Component({
   selector: 'app-details',
@@ -35,86 +29,58 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-
-  /* Date */
-  date = new Date();
-  timeDefaultValue = setHours(new Date(),0);
-  /* Date */
-
+ 
   /* Icon inicialization */
   faMoneyBillAlt = faCoins
   faMapMarkerAlt = faMapMarkerAlt;
   faReceipt = faReceipt;
   faPhone = faPhone;
   /* Icon inicialization */  
-
-  /* Reservation model */
-  reservation = {
-    id:null,
-    creationDate:null,
-    reservationDate:null,
-    people:1,
-    restaurantId:null,
-    //userId:null
-  };
-  /* Reservation model */  
-
-  userLogged:boolean = false;
-
-  reservationForm = new FormGroup({
-    people : new FormControl(this.reservation.people,Validators.required),
-    date : new FormControl(this.date,Validators.required)
-  });
+ 
+  /* userLogged:boolean = false; */  
 
   reservationModalVisible:boolean = false;
+  loginModalVisible:boolean = false;
+
   restaurant:any = {};
 
-  modalVisible:boolean = false;
-
-  constructor (private restaurantService:RestaurantService,
-    private reservationService:ReservationService, 
-    private activatedRoute:ActivatedRoute,
-    private authService:AuthService) {}
+  constructor (private authService:AuthService,private restaurantService:RestaurantService,private activatedRoute:ActivatedRoute) {}
 
   ngOnInit(): void {
     this.findRestaurant();    
   }
 
-  reservationModal():void{
+  /* reservationModal():void{
     this.verifySession();
-    this.modalVisible = true;
+    this.loginModalVisible = true;
     if(this.userLogged){
       this.reservationModalVisible = true;
       this.modalVisible = false;
     }
+  }  */
+  
+
+  private verifySession():void{
+    this.authService.verifySession().subscribe(data=>{
+
+      if(data != null){
+        this.reservationModalVisible = data.emailVerified;
+        return true;
+      }
+      
+      this.loginModalVisible = true;
+    })
   }
+  
+  /* onModalClosed(show){
+    this.modalVisible = false;
+  } */
 
-  handleOk():void{
-    
-    this.reservationModalVisible = false;
-
-    /* Model binding */
-    let people = this.reservationForm.value.people;
-    let date = this.reservationForm.value.date.getTime();
-    
-    this.reservation.reservationDate = date;
-    this.reservation.people = people;
-    this.activatedRoute.params.subscribe(params=>{
-      this.reservation.restaurantId = params.id;
-    });    
-    /* Model binding */  
-
-    /* Save data */
-    this.reservationService.add(this.reservation);
-    /* Save data */
-
-  }
-
-  handleCancel():void{
+  hideReservationModal(){
     this.reservationModalVisible = false;
   }
 
-  findRestaurant(){
+  private findRestaurant():void{
     this.activatedRoute.params.subscribe(params=>{
       this.restaurantService.findRestaurant(params.id).subscribe(restaurant=>{
         this.restaurant = restaurant;
@@ -122,17 +88,18 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  private verifySession():void{
-    this.authService.verifySession().subscribe(data=>{
-      this.userLogged = false;
-      if(data != null){
-        this.userLogged = data.emailVerified;
-        this.modalVisible = false;
-      }
-    })
+  toggleReservationModal(show:boolean = true){
+   
+    if(show){
+      this.verifySession();
+      return true;
+    }
+
+    this.reservationModalVisible = show;    
+    
   }
-  
-  onModalClosed(){
-    this.modalVisible = false;
+
+  toggleLoginModal(show:boolean = true){
+    this.loginModalVisible = show;
   }
 }

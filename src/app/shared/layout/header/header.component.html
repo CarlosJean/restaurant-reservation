@@ -1,23 +1,23 @@
 <!-- <meta name="viewport" content="width=device-width, user-scalable=no"> -->
 <!-- Header -->
 <div nz-row nzJustify="center" nzAlign=middle id="headerRow">
-    <div nz-col nzSm=24 nzMd=8>
+    <div nz-col nzSm=24 nzMd=12>
         <a id="logo" [routerLink]="['/home']">Restaurant Reservation</a>
     </div>
-    <div nz-col nzSm=24 nzMd=16 id="menus">
+    <div nz-col nzSm=24 nzMd=12 id="menus">
         <div nz-row nzJustify=end nzAlign=middle>
             <a nz-col nzSm=6 nzMd=4 [routerLink]="['/home']">Inicio</a>
             <a nz-col nzSm=6 nzMd=4 *ngIf="userLogged" [routerLink]="['/reservation/my-reservations']">Mis reservaciones</a>
             <a nz-col nzSm=6 nzMd=4 *ngIf="!userLogged" href=#>Registrarse</a>
             <a nz-col nzSm=6 nzMd=4 *ngIf="userLogged" (click)=logOut()>Cerrar Sesión</a>
-            <button nz-col nzSm=6 nzMd=4 nz-button nzType="default" (click)="showModal()" nzGhost *ngIf="!userLogged">Acceder</button>
+            <button nz-col nzSm=6 nzMd=4 nz-button nzType="default" (click)="toggleLoginModal()" nzGhost *ngIf="!userLogged">Acceder</button>
         </div>
     </div>  
 </div>
 <!-- Header -->
 
 <!-- Login modal -->
-<app-login [modalVisible]=isVisible (modalClosed)="onModalClosed()"></app-login>
+<app-login [isVisible]=isVisible (toggle)="toggleLoginModal($event)"></app-login>
 <!-- Login modal -->
 
 

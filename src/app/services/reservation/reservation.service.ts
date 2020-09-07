@@ -14,14 +14,11 @@ import { AuthService } from '../auth/auth.service';
 })
 export class ReservationService {
 
-  collectionName = 'reservation';
   constructor(private firestore:AngularFirestore,private restaurantService:RestaurantService,private authService:AuthService) { }
 
-  
    add(reservation:any){        
      /* Encontrar el id del documento */
-    let docId = this.firestore.createId();
-    reservation.id = docId;
+    reservation.id = this.firestore.createId();
     /* Encontrar el id del documento */ 
 
     reservation.creationDate = new Date().getTime();
@@ -41,7 +38,7 @@ export class ReservationService {
   private createReservation(reservation){     
 
     this.firestore
-    .collection(this.collectionName)
+    .collection('reservation')
     .doc(reservation.id)
     .set(reservation)
     .then(()=>{
