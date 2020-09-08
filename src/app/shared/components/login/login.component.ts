@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       let password = this.loginForm.value['password'];
   
       this.authService.emailAndPasswordAuth(email,password).then((data)=>{
-        setTimeout(()=>{this.toggle.emit(false)},5000);
+        setTimeout(()=>{this.toggle.emit(false)},3000);
       }).catch(error=>{
         console.log(error);
         this.errorMessage = this.errorMessages(error.code);

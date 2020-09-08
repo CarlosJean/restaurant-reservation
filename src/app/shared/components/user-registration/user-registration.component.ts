@@ -32,7 +32,7 @@ export class UserRegistrationComponent implements OnInit {
 
   /* Success message */  
   successfulRegistration:boolean = false;
-  successMessage:string = 'Felicidades! Usted ha sido registrado exitosamente.';
+  successMessage:string = '';
   /* Success message */
 
   constructor(private fireauth:AngularFireAuth) { }
@@ -56,14 +56,19 @@ export class UserRegistrationComponent implements OnInit {
         data.user.updateProfile({
           displayName: displayName          
         });
-        
+
         /* Envío de correo de validación */
-        data.user.sendEmailVerification().then()
+        data.user.sendEmailVerification().then(()=>{
+          this.successfulRegistration = true;
+          this.successMessage = `Felicidades ${name}! Usted ha sido registrado exitosamente. Revise su correo para activar su cuenta.`
+        }).catch(error=>{
+          console.log(error);
+        })
         /* Envío de correo de validación */
 
         this.errorMessage = '';
-        this.successfulRegistration = true;
-        setTimeout(()=>{this.toggle.emit(false);},5000);
+        
+        setTimeout(()=>{this.toggle.emit(false);},3000);
         
       }).catch(error=>{
         this.errorMessage = error.message;

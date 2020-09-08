@@ -23,7 +23,8 @@ export class HeaderComponent implements OnInit {
 
   logOut(){
     this.authService.logout().then(()=>{
-      this.verifySession();
+      //this.verifySession();
+      this.userLogged = false;
     }).catch(error=>{
       console.error(error);
     });
