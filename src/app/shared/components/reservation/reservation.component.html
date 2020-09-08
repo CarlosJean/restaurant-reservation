@@ -1,5 +1,5 @@
 <!-- Reservation modal -->
-<nz-modal [nzVisible]="isVisible" (toggleModal)= hideModal() nzTitle="Reservación de mesa" [nzClosable]=true [nzMaskClosable]=false>
+<nz-modal [nzVisible]="isVisible" (toggleModal)= hideModal() nzTitle="Reservación de mesa" [nzClosable]=false [nzMaskClosable]=false>
     <ng-container *ngTemplateOutlet="reservationTemplate"></ng-container>   
     <!-- Modal footer -->
     <div *nzModalFooter>
@@ -19,25 +19,28 @@
                  [nzStep]="1" 
                  nzPlaceHolder="Cantidad de personas" 
                  style="width: 100%;"
-                 formControlName="people"></nz-input-number>
+                 formControlName="people"
+                 ></nz-input-number>
              </nz-form-control>
+             <div *ngIf="f.people.errors != null && f.people.errors.required " class="errorMessage" nz-col nzSpan=24>Debe introducir la cantidad de personas.</div>
          </nz-form-item>
          <nz-form-item nz-row>
              <nz-form-label nz-col nzSpan=24>Fecha y hora</nz-form-label>
-             <nz-form-control>
+             <nz-form-control nz-col nzSpan=24>
                  <nz-input-group nzCompact>
                      <nz-date-picker 
                      nzFormat="dd-MM-yyyy hh:mm" 
                      nzPlaceHolder="Seleccione una fecha" 
                      [nzDisabledDate]="disabledDate"
                      formControlName="date"
-                     [nzShowTime]="{ nzDefaultOpenValue: timeDefaultValue }"></nz-date-picker>
+                     [nzShowTime]="{ nzDefaultOpenValue: timeDefaultValue }"
+                     ></nz-date-picker>
                  </nz-input-group>
              </nz-form-control>
+             <div *ngIf="f.date.invalid && f.date.errors.invalidDate" class="errorMessage" nz-col nzSpan=24>Debe introducir una fecha válida.</div>
          </nz-form-item>   
      </form>
  </ng-template>
- 
  <!-- Reservation modal --> 
 
 

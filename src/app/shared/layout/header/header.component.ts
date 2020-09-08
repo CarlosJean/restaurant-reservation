@@ -11,8 +11,9 @@ import Swal from 'sweetalert2';
 export class HeaderComponent implements OnInit {
   /* faUser = faUser; */
   isVisible:boolean = false;
-
   userLogged:boolean;
+
+  userRegistrationVisible:boolean = false;
 
   constructor(private authService:AuthService) { }
 
@@ -22,12 +23,15 @@ export class HeaderComponent implements OnInit {
 
   logOut(){
     this.authService.logout().then(()=>{
-      this.logoutAlert();
+      this.verifySession();
+    }).catch(error=>{
+      console.error(error);
     });
   }
 
   private verifySession(){
     this.authService.verifySession().subscribe(data=>{
+      this.userLogged = false;
       if(data != null){
         this.userLogged = data.emailVerified;        
       }
@@ -49,9 +53,12 @@ export class HeaderComponent implements OnInit {
       cancelButtonText: 'No'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.userLogged = false;
+        this.logOut();
       }
     })
   }
   
+  userRegistrationToggle(show:boolean=true){
+    this.userRegistrationVisible = show;
+  }
 }

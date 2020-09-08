@@ -16,6 +16,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { RouterModule } from '@angular/router';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 /* Ng Zorro */
 
 /* Firebase */
@@ -26,10 +27,13 @@ import { environment } from 'src/environments/environment';
 
 /* Forms module */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MinDateValidatorDirective } from './directives/min-date-validator.directive';
+import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+import { PasswordConfirmationDirective } from './directives/password-confirmation/password-confirmation.directive';
 /* Forms module */
 
 @NgModule({
-  declarations: [LoginComponent,HeaderComponent,FooterComponent,ReservationComponent],
+  declarations: [LoginComponent,HeaderComponent,FooterComponent,ReservationComponent, UserRegistrationComponent, PasswordConfirmationDirective],
   imports: [
     CommonModule,
     /* BrowserModule, */
@@ -41,6 +45,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NzFormModule,
     NzInputNumberModule,
     NzDatePickerModule,
+    NzAlertModule,
     RouterModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -50,6 +55,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
     /* Forms module */    
   ],
-  exports:[LoginComponent,HeaderComponent,FooterComponent,ReservationComponent,NzFormModule/*,FormsModule,ReactiveFormsModule ,NzGridModule,,NzInputModule,NzInputNumberModule,NzDatePickerModule */]
+  exports:[LoginComponent,HeaderComponent,FooterComponent,ReservationComponent,NzFormModule,UserRegistrationComponent/*,FormsModule,ReactiveFormsModule ,NzGridModule,,NzInputModule,NzInputNumberModule,NzDatePickerModule */],
+  providers:[MinDateValidatorDirective]
+
 })
 export class SharedModule { }

@@ -15,6 +15,7 @@ import { Validators } from '@angular/forms';
 import setHours from 'date-fns/setHours';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DisabledTimeFn } from 'ng-zorro-antd/date-picker';
+import { MinDateValidatorDirective } from '../../directives/min-date-validator.directive';
 /* Date */
 
 @Component({
@@ -29,7 +30,7 @@ export class ReservationComponent implements OnInit {
 
   /* Date */
   today = new Date();
-  timeDefaultValue = setHours(this.today,0);
+  timeDefaultValue = setHours(this.today,this.today.getHours()+2);
   /* Date */
 
   /* Reservation model */
@@ -44,11 +45,14 @@ export class ReservationComponent implements OnInit {
   /* Reservation model */  
 
   reservationForm = new FormGroup({
-    people : new FormControl(this.reservation.people,Validators.required),
-    date : new FormControl(this.today,Validators.required)
+    people : new FormControl(this.reservation.people,[Validators.required,Validators.min(1)]),
+    date : new FormControl(this.timeDefaultValue,[Validators.required,this.minDateValidator.minDateValidate])
   });
 
-  constructor(private reservationService:ReservationService,private activatedRoute:ActivatedRoute) {  }
+   // convenience getter for easy access to form fields
+   get f() { return this.reservationForm.controls; }
+
+  constructor(private reservationService:ReservationService,private activatedRoute:ActivatedRoute, private minDateValidator:MinDateValidatorDirective) {  }
 
   ngOnInit(): void {}
 
@@ -60,7 +64,6 @@ export class ReservationComponent implements OnInit {
   hideModal(){
     this.toggle.emit(false);
   }
-
 
   handleOk():void{
     
@@ -76,36 +79,26 @@ export class ReservationComponent implements OnInit {
     });
     /* Save data */
 
-    this.hideModal();
-
+    this.resetForm();
+    
   }
 
   handleCancel():void{
     this.hideModal();
   }
 
-  /* reservationDateValidation():ValidatorFn{
-    return (control: AbstractControl): {[key: string]: any} | null => {
-      const forbidden = new Date() < control.value;
-      return forbidden ? {forbiddenName: {value: control.value}} : null;
-    };
-  }
-   */
 
-  /* private findRestaurant():void{
-    this.activatedRoute.params.subscribe(params=>{
-      this.restaurantService.findRestaurant(params.id).subscribe(restaurant=>{
-        this.reservation.restaurant = restaurant;
-      });
-    });
-  }
+  private resetForm(){
+    /* Ocultar modal y Limpiar datos */
+    this.hideModal();
+    this.reservation.people = 1;
+    this.timeDefaultValue = setHours(this.today,this.today.getHours()+2);
 
-  private findUser(){
-    this.authService.verifySession().subscribe(session=>{
-      if(session != null){
-        this.reservation.userId = session.uid;
-      }
+    this.reservationForm = new FormGroup({
+      people : new FormControl(this.reservation.people,[Validators.required,Validators.min(1)]),
+      date : new FormControl(this.timeDefaultValue,[Validators.required,this.minDateValidator.minDateValidate])
     });
-  } */
+    /* Ocultar modal y Limpiar datos */    
+  }
 
 }

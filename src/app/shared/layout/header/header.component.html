@@ -8,8 +8,8 @@
         <div nz-row nzJustify=end nzAlign=middle>
             <a nz-col nzSm=6 nzMd=4 [routerLink]="['/home']">Inicio</a>
             <a nz-col nzSm=6 nzMd=4 *ngIf="userLogged" [routerLink]="['/reservation/my-reservations']">Mis reservaciones</a>
-            <a nz-col nzSm=6 nzMd=4 *ngIf="!userLogged" href=#>Registrarse</a>
-            <a nz-col nzSm=6 nzMd=4 *ngIf="userLogged" (click)=logOut()>Cerrar Sesión</a>
+            <a nz-col nzSm=6 nzMd=4 *ngIf="!userLogged" (click)=userRegistrationToggle()>Registrarse</a>
+            <a nz-col nzSm=6 nzMd=4 *ngIf="userLogged" (click)=logoutAlert()>Cerrar Sesión</a>
             <button nz-col nzSm=6 nzMd=4 nz-button nzType="default" (click)="toggleLoginModal()" nzGhost *ngIf="!userLogged">Acceder</button>
         </div>
     </div>  
@@ -20,5 +20,7 @@
 <app-login [isVisible]=isVisible (toggle)="toggleLoginModal($event)"></app-login>
 <!-- Login modal -->
 
-
+<!-- User registration modal -->
+<app-user-registration [isVisible]=userRegistrationVisible (toggle)=userRegistrationToggle($event)></app-user-registration>
+<!-- User registration modal -->
 

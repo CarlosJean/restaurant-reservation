@@ -6,19 +6,22 @@
 }
 
 #container{
-    height: 100%;
+    height: 80vh;
 }
 
-#dvReservationsList{
-    height: 95%;
+#dvReservations{
+    height: 400px;
     background: #001529cf;
     border-radius: 10px;   
-    overflow: auto; 
+    color: white;
 }
 
-#dvReservationsList nz-list {
-    color: white;
-    font-size:16px
+
+#dvReservationsList{
+    font-size:16px;
+    overflow: auto;
+    height: 80%;
+    border: 1px solid transparent;
 }
 
 #restaurantName{
@@ -34,10 +37,13 @@ nz-list-item a{
     color: white;
 }
 
-#listHeader{
-    font-size:20px;
-    font-weight: bold;
-    text-align: center;
+#listHeader {
+	font-size: 20px;
+	font-weight: bold;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #reservationDate{

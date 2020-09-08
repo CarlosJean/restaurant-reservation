@@ -7,7 +7,7 @@ import { auth } from 'firebase/app';
 })
 export class AuthService {
 
-  persistenceType='session';
+  private persistenceType='session';
 
   constructor(private auth:AngularFireAuth) { }
 
@@ -22,6 +22,10 @@ export class AuthService {
   googleAuth(){
     return this.auth.signInWithPopup(new auth.GoogleAuthProvider());
   } 
+
+  emailAndPasswordAuth(email:string, password:string){
+    return this.auth.signInWithEmailAndPassword(email,password);
+  }
 
   logout(){
     return this.auth.signOut();

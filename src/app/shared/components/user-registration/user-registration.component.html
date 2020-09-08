@@ -1,0 +1,42 @@
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Registrarse como usuario" (nzOnCancel)=handleCancel() (nzOnOk)=handleOk()  [nzMaskClosable]=true>    
+    <ng-container *ngTemplateOutlet=registrationFormTemplate></ng-container>
+    <!-- Modal footer -->
+    <div *nzModalFooter>
+        <button nz-button nzType=default (click)=handleCancel()>Cerrar</button> 
+        <button nz-button nzType=primary (click)=handleOk() [disabled]=!userRegistrationForm.valid>Registrarse</button> 
+    </div>
+    <!-- Modal footer -->    
+</nz-modal>
+
+<!-- Form template -->
+<ng-template #registrationFormTemplate>
+    <nz-alert nzType="error" [nzMessage]=errorMessage *ngIf="errorMessage != ''"></nz-alert>
+    <nz-alert nzType="success" [nzMessage]=successMessage *ngIf="successfulRegistration"></nz-alert>
+    <form nz-form [formGroup]="userRegistrationForm">
+        <nz-form-item>
+            <nz-form-control>
+                <input type="text" nz-input placeholder="Ingrese su nombre" formControlName=name/>
+            </nz-form-control>
+            <nz-form-control>
+                <input type="text" nz-input placeholder="Ingrese su apellido" formControlName=surname/>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control>
+                <input type="email" nz-input placeholder="Ingrese su correo electrónico" formControlName=email/>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control>
+                <input type="password" nz-input placeholder="Ingrese su contraseña" formControlName=password/>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control>
+                <input type="password" nz-input placeholder="Confirme su contraseña" formControlName=passwordConfirmation/>
+            </nz-form-control>
+        </nz-form-item>    
+    </form>
+</ng-template>
+<!-- Form template -->
+
