@@ -35,7 +35,6 @@ export class HeaderComponent implements OnInit {
 
   private verifySession(){
     this.authService.verifySession().subscribe(data=>{
-      console.log(data);
       this.userLogged = false;
       if(data != null){
         this.userLogged = data.emailVerified; 
