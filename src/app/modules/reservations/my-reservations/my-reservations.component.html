@@ -3,13 +3,16 @@
         <div nz-row id=dvReservations>
             <ng-container nz-col nzSpan=24 *ngTemplateOutlet="listHeader"></ng-container>
             <nz-list nzBordered nz-col nzSpan=24 id=dvReservationsList>
-                <nz-list-item *ngFor="let reservation of reservations" nz-row >
-                    <a [routerLink]="['/restaurants/details',reservation.restaurant.id]" nz-col nzSpan=24>
+                <nz-list-item *ngFor="let reservation of reservations" nz-row nzAlign=middle>                    
+                    <a [routerLink]="['/restaurants/details',reservation.restaurant.id]" nz-col nzSpan=20>
                         <div nz-row>
                             <label nz-col nzSpan=24 id="restaurantName">{{reservation.restaurant.name}}</label>
-                            <label nz-col nzSpan=24 id="reservationDate">Reservación para el día {{reservation.reservationDate | date:'dd/MM/yyyy'}} a las {{reservation.reservationDate | date:'hh:mm a'}}</label>
+                            <label nz-col nzSpan=24 id="reservationDate">
+                                Reservación para el día {{reservation.reservationDate | date:'dd/MM/yyyy'}} a las {{reservation.reservationDate | date:'hh:mm a'}} | {{reservation.people}} persona(s)
+                            </label>
                         </div>    
                     </a>
+                    <i nz-icon nzType="delete" nzTheme="fill" nz-col nzSpan=4 (click)="cancelReservation(reservation.id)"></i>
                 </nz-list-item>
             </nz-list>
         </div>

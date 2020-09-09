@@ -17,6 +17,8 @@ import { RouterModule } from '@angular/router';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 /* Ng Zorro */
 
 /* Firebase */
@@ -46,6 +48,8 @@ import { PasswordConfirmationDirective } from './directives/password-confirmatio
     NzInputNumberModule,
     NzDatePickerModule,
     NzAlertModule,
+    NzIconModule,
+    NzDropDownModule,
     RouterModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase),

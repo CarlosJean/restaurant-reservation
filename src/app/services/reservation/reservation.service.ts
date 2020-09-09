@@ -17,20 +17,20 @@ export class ReservationService {
   constructor(private firestore:AngularFirestore,private restaurantService:RestaurantService,private authService:AuthService) { }
 
    add(reservation:any){        
-     /* Encontrar el id del documento */
-    reservation.id = this.firestore.createId();
-    /* Encontrar el id del documento */ 
 
-    reservation.creationDate = new Date().getTime();
-
-    this.authService.verifySession().subscribe(data=>{
-      reservation.userId = data.uid;
-
+    this.authService.verifySession().subscribe(userData=>{     
       this.restaurantService.findRestaurant(reservation.restaurantId).subscribe(restaurant=>{
-        reservation.restaurant = restaurant;
+
+        /* Se llena el objeto con los datos de la reservación*/
+        reservation.userId = userData.uid;
+        reservation.id = this.firestore.createId();
+        reservation.creationDate = new Date().getTime();
+        reservation.status = 'active';
+        reservation.restaurant = restaurant;  
+        /* Se llena el objeto con los datos de la reservación*/
+
         this.createReservation(reservation);  
       });
-      
     });  
 
   }
@@ -57,14 +57,20 @@ export class ReservationService {
     .catch(error=>{
       console.error(error);
       Swal.fire({
-        text:`Disculpe, tuvimos un inconveniente al registrar su reservación. Intentelo más tarde`,
+        text:`Disculpe, tuvimos un inconveniente al registrar su reservación. Intentelo más tarde.`,
         icon:'error'
       });
     });  
   }
 
-  reservations(userId):Observable<any>{
-    return this.firestore.collection('reservation', ref => ref.where('userId','==',userId).orderBy('reservationDate', 'desc')).valueChanges();
+  reservations(userId:string):Observable<any>{
+    return this.firestore.collection('reservation', 
+    ref => ref.where('userId','==',userId)
+    .where('status','==','active')
+    .orderBy('reservationDate', 'desc')).valueChanges();
   }
-
+  
+  cancelReservation(reservationId:string){    
+    return this.firestore.collection('reservation').doc(reservationId).update({status:'cancelled'});
+  }
 }

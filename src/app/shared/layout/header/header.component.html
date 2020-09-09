@@ -1,16 +1,21 @@
 <!-- <meta name="viewport" content="width=device-width, user-scalable=no"> -->
 <!-- Header -->
 <div nz-row nzJustify="center" nzAlign=middle id="headerRow">
-    <div nz-col nzSm=24 nzMd=12>
+    <div nz-col nzSm=24 nzMd=8>
         <a id="logo" [routerLink]="['/home']">Restaurant Reservation</a>
     </div>
-    <div nz-col nzSm=24 nzMd=12 id="menus">
+    <div nz-col nzSm=24 nzMd=16 id="menus">
         <div nz-row nzJustify=end nzAlign=middle>
-            <a nz-col nzSm=6 nzMd=4 [routerLink]="['/home']">Inicio</a>
-            <a nz-col nzSm=6 nzMd=4 *ngIf="userLogged" [routerLink]="['/reservation/my-reservations']">Mis reservaciones</a>
-            <a nz-col nzSm=6 nzMd=4 *ngIf="!userLogged" (click)=userRegistrationToggle()>Registrarse</a>
-            <a nz-col nzSm=6 nzMd=4 *ngIf="userLogged" (click)=logoutAlert()>Cerrar Sesión</a>
-            <button nz-col nzSm=6 nzMd=4 nz-button nzType="default" (click)="toggleLoginModal()" nzGhost *ngIf="!userLogged">Acceder</button>
+            <a nz-col nzSm=6 nzMd=5 [routerLink]="['/home']">Inicio</a>            
+            <label nz-dropdown [nzDropdownMenu]="menu" *ngIf="userLogged">{{displayName | titlecase}}<i nz-icon nzType="caret-down" nzTheme="outline"></i></label>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu>
+                  <li nz-menu-item><a [routerLink]="['/reservation/my-reservations']"><i nz-icon nzType="ordered-list" nzTheme="outline"></i> Mis reservaciones</a></li>
+                  <li nz-menu-item (click)=logoutAlert()><i nz-icon nzType="logout" nzTheme="outline"></i> Cerrar Sesión</li>
+                </ul>
+            </nz-dropdown-menu>
+            <a nz-col nzSm=6 nzMd=5 *ngIf="!userLogged" (click)=userRegistrationToggle()>Registrarse</a>
+            <button nz-col nzSm=6 nzMd=5 nz-button nzType="default" (click)="toggleLoginModal()" nzGhost *ngIf="!userLogged">Acceder</button>
         </div>
     </div>  
 </div>

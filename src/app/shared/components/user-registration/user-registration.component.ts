@@ -60,7 +60,7 @@ export class UserRegistrationComponent implements OnInit {
         /* Envío de correo de validación */
         data.user.sendEmailVerification().then(()=>{
           this.successfulRegistration = true;
-          this.successMessage = `Felicidades ${name}! Usted ha sido registrado exitosamente. Revise su correo para activar su cuenta.`
+          this.successMessage = `Felicidades ${name}! Usted ha sido registrado exitosamente. Le enviaremos un correo para que pueda activar su cuenta.`
         }).catch(error=>{
           console.log(error);
         })
@@ -81,9 +81,5 @@ export class UserRegistrationComponent implements OnInit {
   }
   handleCancel(){
     this.toggle.emit(false);
-  }
-
-  capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 }

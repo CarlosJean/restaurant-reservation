@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit {
 
   userRegistrationVisible:boolean = false;
 
-  constructor(private authService:AuthService) { }
+  displayName:string;
+  constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
     this.verifySession();
@@ -23,8 +25,9 @@ export class HeaderComponent implements OnInit {
 
   logOut(){
     this.authService.logout().then(()=>{
-      //this.verifySession();
       this.userLogged = false;
+      this.isVisible = false;
+      this.router.navigate(['/home']);
     }).catch(error=>{
       console.error(error);
     });
@@ -32,9 +35,11 @@ export class HeaderComponent implements OnInit {
 
   private verifySession(){
     this.authService.verifySession().subscribe(data=>{
+      console.log(data);
       this.userLogged = false;
       if(data != null){
-        this.userLogged = data.emailVerified;        
+        this.userLogged = data.emailVerified; 
+        this.displayName = data.displayName;
       }
     })
   }

@@ -44,14 +44,21 @@ export class LoginComponent implements OnInit {
       let password = this.loginForm.value['password'];
   
       this.authService.emailAndPasswordAuth(email,password).then((data)=>{
-        setTimeout(()=>{this.toggle.emit(false)},3000);
+        if(data.user.emailVerified){
+          this.loginForm.reset();
+          this.errorMessage = '';
+          setTimeout(()=>{this.toggle.emit(false)},3000);
+        }else{
+          this.errorMessage = this.errorMessages('auth/email-not-verified');
+        }
       }).catch(error=>{
         console.log(error);
         this.errorMessage = this.errorMessages(error.code);
       });
+      
     }).catch(error=>{
       console.log(error);
-    })
+    });
   }
 
   handleCancel(): void {    
@@ -73,10 +80,25 @@ export class LoginComponent implements OnInit {
   }  
 
   private errorMessages(errorCode:string){
+    
     let errorMessage:string = '';
     switch(errorCode){
-      case 'auth/wrong-password':
+      case 'auth/wrong-password':{
         errorMessage = 'Correo electrónico o contraseña incorrecta.'
+        break;
+      }
+      case 'auth/email-not-verified':{
+        errorMessage = 'Aún no ha activado su cuenta. Por favor, revise su correo para activar su cuenta.'
+        break;
+      }
+      case 'auth/user-not-found':{
+        errorMessage = 'Este usuario aún no se ha registrado.'
+        break;
+      }
+      case 'auth/invalid-email':{
+        errorMessage = 'Ingrese un correo electrónico válido.'
+        break;
+      }
     }
 
     return errorMessage;

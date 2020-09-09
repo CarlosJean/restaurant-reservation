@@ -18,10 +18,10 @@
                         </div>
                     </div>
                     <div nz-col nzSpan="24">
-                        <nz-rate  [nzCount]="5" [ngModel]=restaurant.price [nzAllowHalf]=true nzDisabled [nzCharacter]="moneyIcon"></nz-rate>
-                        <ng-template #moneyIcon>                    
+                        <nz-rate  [nzCount]="5" [ngModel]=restaurant.price [nzAllowHalf]=true nzDisabled></nz-rate>
+                        <!-- <ng-template #moneyIcon>                    
                             <fa-icon [icon]="faMoneyBillAlt"></fa-icon>
-                        </ng-template>                                               
+                        </ng-template>    -->                                            
                     </div>
                     <div nz-col nzSpan=24 id="dvBtnReserve">
                         <button nz-button nzType="primary" nzShape="round" (click)="toggleReservationModal()"><fa-icon [icon]="faReceipt" style="color:white; margin-right: 2%;"></fa-icon>&nbsp;Reservar</button>

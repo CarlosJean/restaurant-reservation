@@ -14,6 +14,8 @@ import { ReservationService } from 'src/app/services/reservation/reservation.ser
 /* ng Zorro */
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzListModule } from 'ng-zorro-antd/list';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 /* ng Zorro */
 
 @NgModule({
@@ -24,7 +26,9 @@ import { NzListModule } from 'ng-zorro-antd/list';
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase),
     NzGridModule,
-    NzListModule 
+    NzListModule,
+    NzIconModule,
+    NzModalModule 
   ],
   providers:[
     ReservationService
