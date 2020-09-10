@@ -12,16 +12,17 @@ import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 export class MyReservationsComponent implements OnInit {
 
   reservations:Array<any> = [];
-  confirmModal?: NzModalRef; // For testing by now
+  confirmModal?: NzModalRef;
 
   constructor(private reservationsService:ReservationService,private authService:AuthService,private modal: NzModalService) { }
 
   ngOnInit(): void {
     this.authService.verifySession().subscribe(userData=>{
-      this.reservationsService.reservations(userData.uid).subscribe(data=>{
-        this.reservations = data;  
-        console.log(this.reservations.length)
-      });
+      if(userData != null){
+        this.reservationsService.reservations(userData.uid).subscribe(data=>{
+          this.reservations = data;  
+        });
+      }
     });
   }
 

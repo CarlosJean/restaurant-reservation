@@ -3,14 +3,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {AuthService} from '../../../services/auth/auth.service';
 /* Services */
 /* Modal */
-import { NzModalService } from 'ng-zorro-antd/modal';
-import { HeaderComponent } from '../../layout/header/header.component';
-import { database } from 'firebase';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 /* Modal */
-/* Firebase */
-
-/* Firebase */
 
 @Component({
   selector: 'app-login',
@@ -31,6 +25,12 @@ export class LoginComponent implements OnInit {
 
   errorMessage:string='';
 
+  /* Forgot password modal */
+  forgotPasswordVisible:boolean = false;
+  /* Forgot password modal */
+
+  keepSessionActive:boolean = true;
+
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
@@ -39,21 +39,20 @@ export class LoginComponent implements OnInit {
 
   handleOk(): void {  
     
-    this.authService.authPersistence().then(()=>{
+    this.authService.authPersistence(this.keepSessionActive).then(()=>{
       let email = this.loginForm.value['email'];
       let password = this.loginForm.value['password'];
   
       this.authService.emailAndPasswordAuth(email,password).then((data)=>{
-        if(data.user.emailVerified){
-          this.loginForm.reset();
-          this.errorMessage = '';
-          setTimeout(()=>{this.toggle.emit(false)},3000);
+        if(data.user.emailVerified){          
+          this.handleCancel();
         }else{
-          this.errorMessage = this.errorMessages('auth/email-not-verified');
+          this.errorMessage = this.authService.errorMessages('auth/email-not-verified');
+          this.authService.logout().then(()=>{}).catch(error=>console.log(error)); //Se ejecuta esta función porque 'emailAndPasswordAuth guarda una sesión y hay que eliminarla para evitar conflictos.'
         }
       }).catch(error=>{
         console.log(error);
-        this.errorMessage = this.errorMessages(error.code);
+        this.errorMessage = this.authService.errorMessages(error.code);
       });
       
     }).catch(error=>{
@@ -62,11 +61,13 @@ export class LoginComponent implements OnInit {
   }
 
   handleCancel(): void {    
+    this.loginForm.reset();
+    this.errorMessage = '';
     this.toggle.emit(false);
   }
 
   googleAuth():void{
-    this.authService.authPersistence().then(()=>{
+    this.authService.authPersistence(this.keepSessionActive).then(()=>{
       this.authService.googleAuth().then((userData)=>{
         if(userData.user.uid != null){
           this.handleCancel();
@@ -79,28 +80,7 @@ export class LoginComponent implements OnInit {
     });
   }  
 
-  private errorMessages(errorCode:string){
-    
-    let errorMessage:string = '';
-    switch(errorCode){
-      case 'auth/wrong-password':{
-        errorMessage = 'Correo electrónico o contraseña incorrecta.'
-        break;
-      }
-      case 'auth/email-not-verified':{
-        errorMessage = 'Aún no ha activado su cuenta. Por favor, revise su correo para activar su cuenta.'
-        break;
-      }
-      case 'auth/user-not-found':{
-        errorMessage = 'Este usuario aún no se ha registrado.'
-        break;
-      }
-      case 'auth/invalid-email':{
-        errorMessage = 'Ingrese un correo electrónico válido.'
-        break;
-      }
-    }
-
-    return errorMessage;
+  forgotPasswordToggle(show:boolean){
+    this.forgotPasswordVisible = show;
   }
 }

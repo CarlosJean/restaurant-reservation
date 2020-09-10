@@ -15,24 +15,29 @@
     <form nz-form [formGroup]="userRegistrationForm">
         <nz-form-item>
             <nz-form-control>
+                <nz-form-label nzSpan=12 nz-col>Nombre</nz-form-label>
                 <input type="text" nz-input placeholder="Ingrese su nombre" formControlName=name/>
-            </nz-form-control>
+            </nz-form-control>            
             <nz-form-control>
+                <nz-form-label nzSpan=12 nz-col>Apellido</nz-form-label>
                 <input type="text" nz-input placeholder="Ingrese su apellido" formControlName=surname/>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control>
+                <nz-form-label nzSpan=12 nz-col>Correo electrónico</nz-form-label>
                 <input type="email" nz-input placeholder="Ingrese su correo electrónico" formControlName=email/>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control>
+                <nz-form-label nzSpan=12 nz-col>Contraseña</nz-form-label>
                 <input type="password" nz-input placeholder="Ingrese su contraseña" formControlName=password/>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control>
+                <nz-form-label nzSpan=12 nz-col>Confirmación de contraseña</nz-form-label>
                 <input type="password" nz-input placeholder="Confirme su contraseña" formControlName=passwordConfirmation/>
             </nz-form-control>
         </nz-form-item>    

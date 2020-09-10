@@ -19,6 +19,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 /* Ng Zorro */
 
 /* Firebase */
@@ -32,10 +33,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MinDateValidatorDirective } from './directives/min-date-validator.directive';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { PasswordConfirmationDirective } from './directives/password-confirmation/password-confirmation.directive';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 /* Forms module */
 
 @NgModule({
-  declarations: [LoginComponent,HeaderComponent,FooterComponent,ReservationComponent, UserRegistrationComponent, PasswordConfirmationDirective],
+  declarations: [LoginComponent,HeaderComponent,FooterComponent,ReservationComponent, UserRegistrationComponent, PasswordConfirmationDirective, ForgotPasswordComponent],
   imports: [
     CommonModule,
     /* BrowserModule, */
@@ -50,16 +52,17 @@ import { PasswordConfirmationDirective } from './directives/password-confirmatio
     NzAlertModule,
     NzIconModule,
     NzDropDownModule,
+    NzCheckboxModule,
     RouterModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase),
-
+    
     /* Forms module */
     FormsModule,
     ReactiveFormsModule
     /* Forms module */    
   ],
-  exports:[LoginComponent,HeaderComponent,FooterComponent,ReservationComponent,NzFormModule,UserRegistrationComponent/*,FormsModule,ReactiveFormsModule ,NzGridModule,,NzInputModule,NzInputNumberModule,NzDatePickerModule */],
+  exports:[LoginComponent,HeaderComponent,FooterComponent,ReservationComponent,NzFormModule,UserRegistrationComponent,NzCheckboxModule/*,FormsModule,ReactiveFormsModule ,NzGridModule,,NzInputModule,NzInputNumberModule,NzDatePickerModule */],
   providers:[MinDateValidatorDirective]
 
 })

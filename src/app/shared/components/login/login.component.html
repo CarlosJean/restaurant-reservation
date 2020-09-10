@@ -4,32 +4,41 @@
 <!-- Modal footer -->
 <div *nzModalFooter>
   <button nz-button nzType=default (click)=handleCancel()>Cerrar</button>
-  <button nz-button nzType=primary (click)=handleOk()>Acceder</button>
+  <button nz-button nzType=primary (click)=handleOk() [disabled]=!loginForm.valid>Acceder</button>
 </div>
 <!-- Modal footer -->  
 </nz-modal>
-<ng-template #loginFormTemplate>
-  <nz-alert nzType="error" *ngIf="errorMessage != ''" [nzMessage]=errorMessage></nz-alert>
-  <form nz-form [formGroup]=loginForm nzLayout="horizontal">
+<ng-template #loginFormTemplate nz-row>
+  <nz-alert nzType="error" *ngIf="errorMessage != ''" [nzMessage]=errorMessage nz-col nzSpan=24></nz-alert>
+  <form nz-form [formGroup]=loginForm nzLayout="horizontal" nz-col nzSpan=24>
     <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your username!">
+        <nz-form-control nzErrorTip="Por favor introduzca un correo.">
             <nz-input-group nzPrefixIcon="user">
               <input type="text" nz-input placeholder="Correo electrónico" formControlName=email/>
             </nz-input-group>
         </nz-form-control>
     </nz-form-item >
     <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your Password!">
+        <nz-form-control nzErrorTip="Por favor introduzca una contraseña.">
             <nz-input-group nzPrefixIcon="lock">
               <input type="password" nz-input placeholder="Contraseña" formControlName=password/>
             </nz-input-group>
           </nz-form-control>
     </nz-form-item >
   </form>
-  <label id="accessWith">Acceder con: </label>
-  <button nz-button (click)="googleAuth()">
-    <img src="/assets/google-logo.png" height="100%" width="100%"/>
-  </button>
+  <div nz-row nzJustify=space-between>    
+    <label nz-checkbox [(ngModel)]="keepSessionActive" name=keepSession>Mantener sesión activa</label>
+    <a nz-button nzType=link (click)=forgotPasswordToggle(true) nz-col nzSpan=8 id=forgotMyPasswordLink>Olvidé mi contraseña</a>
+  </div>
+  <div nz-col nzSpan=24>
+    <label id="accessWith">Acceder con: </label>
+    <button nz-button (click)="googleAuth()">
+      <img src="/assets/google-logo.png" height="100%" width="100%"/>
+    </button>
+  </div>
 </ng-template>
 <!-- Modal del login -->
 
+<!-- Forgot my password modal -->
+<app-forgot-password [isVisible]=forgotPasswordVisible (toggle)=forgotPasswordToggle($event)></app-forgot-password >
+  <!-- Forgot my password modal -->

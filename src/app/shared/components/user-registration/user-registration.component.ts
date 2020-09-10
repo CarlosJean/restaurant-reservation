@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -22,10 +23,6 @@ export class UserRegistrationComponent implements OnInit {
   });
   /* User registration form */  
 
-  /* Password confirmation error */
-  passwordConfirmationError:boolean = false;
-  /* Password confirmation error */
-
   /* General error message  */  
   errorMessage:string = '';
   /* General error message  */
@@ -35,7 +32,7 @@ export class UserRegistrationComponent implements OnInit {
   successMessage:string = '';
   /* Success message */
 
-  constructor(private fireauth:AngularFireAuth) { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -50,8 +47,8 @@ export class UserRegistrationComponent implements OnInit {
     let passwordConFirmation = this.userRegistrationForm.get('passwordConfirmation').value;
     
     if(!(password != passwordConFirmation)){
-      this.passwordConfirmationError = false;
-      this.fireauth.createUserWithEmailAndPassword(email,password).then((data)=>{
+
+      this.authService.createUserWithEmailAndPassword(email,password).then((data)=>{
         
         data.user.updateProfile({
           displayName: displayName          
@@ -66,16 +63,15 @@ export class UserRegistrationComponent implements OnInit {
         })
         /* Envío de correo de validación */
 
-        this.errorMessage = '';
-        
-        setTimeout(()=>{this.toggle.emit(false);},3000);
-        
+        this.errorMessage = '';        
+        setTimeout(()=>{this.toggle.emit(false);},3000); 
+
       }).catch(error=>{
         this.errorMessage = error.message;
         console.error(error);
       });      
     }else{
-      this.passwordConfirmationError = true;
+      this.errorMessage = 'La contraseña y su confirmación no coinciden.';
     }
     
   }

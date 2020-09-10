@@ -14,9 +14,14 @@ export class HeaderComponent implements OnInit {
   isVisible:boolean = false;
   userLogged:boolean;
 
+  /* Modals */
   userRegistrationVisible:boolean = false;
+  changePasswordVisible:boolean = false;
+  /* Modals */  
 
-  displayName:string;
+
+  displayName:string;  
+
   constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
@@ -65,5 +70,9 @@ export class HeaderComponent implements OnInit {
   
   userRegistrationToggle(show:boolean=true){
     this.userRegistrationVisible = show;
+  } 
+
+  changePasswordToggle(show:boolean=true){
+    this.changePasswordVisible = show;
   }
 }

@@ -43,7 +43,7 @@ export class ReservationService {
     .set(reservation)
     .then(()=>{
       Swal.fire({
-        html:`Felicidades! Su reservación ha sido registrada.<a href="/reservation/my-reservations">Ver mis reservaciones</a>.`,
+        html:`Felicidades! Su reservación ha sido registrada.`,
         icon:'success'
       });
 

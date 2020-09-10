@@ -1,8 +1,12 @@
-/* p{
-    text-align: center;
-} */
+:host{
+    font-family: 'poppins';
+}
+
+p{
+    color: black;
+}
 
 a{
     text-decoration: none;
-    color: black;
+    color: black;    
 }

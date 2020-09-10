@@ -7,16 +7,14 @@ import { auth } from 'firebase/app';
 })
 export class AuthService {
 
-  private persistenceType='session';
-
   constructor(private auth:AngularFireAuth) { }
 
   verifySession(){
     return this.auth.authState;
   }
 
-  authPersistence(){
-    return this.auth.setPersistence(this.persistenceType);
+  authPersistence(keepSessionActive:boolean = true){
+    return (keepSessionActive) ? this.auth.setPersistence('session') : this.auth.setPersistence('none')
   }  
   
   googleAuth(){
@@ -30,4 +28,37 @@ export class AuthService {
   logout(){
     return this.auth.signOut();
   }
+
+  forgotPassword(email:string){
+    return this.auth.sendPasswordResetEmail(email);
+  }
+
+  errorMessages(errorCode:string){
+    
+    let errorMessage:string = '';
+    switch(errorCode){
+      case 'auth/wrong-password':{
+        errorMessage = 'Correo electrónico o contraseña incorrecta.'
+        break;
+      }
+      case 'auth/email-not-verified':{
+        errorMessage = 'Aún no ha activado su cuenta. Por favor, revise su correo para activar su cuenta.'
+        break;
+      }
+      case 'auth/user-not-found':{
+        errorMessage = 'Este usuario aún no se ha registrado.'
+        break;
+      }
+      case 'auth/invalid-email':{
+        errorMessage = 'Ingrese un correo electrónico válido.'
+        break;
+      }
+    }
+
+    return errorMessage;
+  }
+  createUserWithEmailAndPassword(email:string,password:string){
+    return this.auth.createUserWithEmailAndPassword(email,password);
+  }
 }
+
