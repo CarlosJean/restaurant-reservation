@@ -10,6 +10,6 @@ export class MinDateValidatorDirective {
 
   minDateValidate(control:AbstractControl): {[key: string]: any} | null{
     let currentDate = new Date().getTime();
-    return (control.value.getTime() < currentDate) ? {invalidDate: true} : null;   
+    return ( control.value == null || control.value.getTime() < currentDate) ? {invalidDate: true} : null;   
   }
 }

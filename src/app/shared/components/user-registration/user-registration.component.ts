@@ -59,6 +59,7 @@ export class UserRegistrationComponent implements OnInit {
           this.successfulRegistration = true;
           this.successMessage = `Felicidades ${name}! Usted ha sido registrado exitosamente. Le enviaremos un correo para que pueda activar su cuenta.`
           this.authService.logout().then(()=>{}).catch(error=>console.error(error)); //Se elimina la sesión creada en la función 'createUserWithEmailAndPassword'.
+          this.resetForm();
         }).catch(error=>{
           console.log(error);
         })
@@ -78,5 +79,17 @@ export class UserRegistrationComponent implements OnInit {
   }
   handleCancel(){
     this.toggle.emit(false);
+  }
+
+  resetForm(){
+    /* User registration form */
+  this.userRegistrationForm = new FormGroup({
+    name: new FormControl('',[Validators.required]),
+    surname: new FormControl('',[Validators.required]),
+    email: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required]),
+    passwordConfirmation: new FormControl('',[Validators.required])
+  });
+  /* User registration form */
   }
 }

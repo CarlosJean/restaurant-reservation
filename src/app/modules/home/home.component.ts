@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   
   inputSearch(value:string){
 
-    if(value!=''){
+    //if(value!=''){
       this.loading = true;
       this.restaurantService
       .restaurants(value)
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
         this.restaurants = restaurants.restaurants;
         this.loading = false;
       });
-    }
+    //}
   }
 
   getAllRestaurants(){

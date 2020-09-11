@@ -46,7 +46,7 @@ export class ReservationComponent implements OnInit {
 
   reservationForm = new FormGroup({
     people : new FormControl(this.reservation.people,[Validators.required,Validators.min(1)]),
-    date : new FormControl(this.timeDefaultValue,[Validators.required,this.minDateValidator.minDateValidate])
+    date : new FormControl(this.timeDefaultValue,[/* Validators.required, */this.minDateValidator.minDateValidate])
   });
 
    // convenience getter for easy access to form fields

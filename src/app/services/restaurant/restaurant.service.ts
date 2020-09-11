@@ -16,9 +16,9 @@ export class RestaurantService {
   }
 
   restaurants(name?:string):Observable<any>{
-    let restaurantsUrl = this.url+'/api/restaurants?per_page=10&page=1&country=US';
+    let restaurantsUrl = this.url+'/api/restaurants?page=1&country=US';
 
-    if(name!=undefined){
+    if(name!=undefined && name!=''){
        restaurantsUrl = this.url+'/api/restaurants?name='+name;
     }
 
