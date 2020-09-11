@@ -9,7 +9,7 @@
 <!-- Modal footer -->  
 </nz-modal>
 <ng-template #loginFormTemplate nz-row>
-  <nz-alert nzType="error" *ngIf="errorMessage != ''" [nzMessage]=errorMessage nz-col nzSpan=24></nz-alert>
+  <nz-alert [nzType]="message.type" *ngIf="message.message != ''" [nzMessage]=message.message nz-col nzSpan=24></nz-alert>
   <form nz-form [formGroup]=loginForm nzLayout="horizontal" nz-col nzSpan=24>
     <nz-form-item>
         <nz-form-control nzErrorTip="Por favor introduzca un correo.">
@@ -32,8 +32,11 @@
   </div>
   <div nz-col nzSpan=24>
     <label id="accessWith">Acceder con: </label>
-    <button nz-button (click)="googleAuth()">
+    <button nz-button (click)="googleAuth()" title=Google>
       <img src="/assets/google-logo.png" height="100%" width="100%"/>
+    </button>
+    <button nz-button (click)="facebookAuth()" title=Facebook>      
+      <img src="/assets/facebook-logo.png" height="100%" width="100%"/>
     </button>
   </div>
 </ng-template>

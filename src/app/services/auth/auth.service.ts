@@ -21,6 +21,10 @@ export class AuthService {
     return this.auth.signInWithPopup(new auth.GoogleAuthProvider());
   } 
 
+  facebookAuth(){
+    return this.auth.signInWithPopup(new auth.FacebookAuthProvider());
+  }
+
   emailAndPasswordAuth(email:string, password:string){
     return this.auth.signInWithEmailAndPassword(email,password);
   }
@@ -53,6 +57,8 @@ export class AuthService {
         errorMessage = 'Ingrese un correo electrónico válido.'
         break;
       }
+      case 'auth/account-exists-with-different-credential':
+        errorMessage = 'Ya existe una cuenta con la misma dirección de correo electrónico pero diferentes credenciales de inicio de sesión.'
     }
 
     return errorMessage;

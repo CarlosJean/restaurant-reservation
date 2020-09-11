@@ -23,7 +23,10 @@ export class LoginComponent implements OnInit {
   });
   /* Login form */
 
-  errorMessage:string='';
+  message={
+    type:null,
+    message:null
+  }
 
   /* Forgot password modal */
   forgotPasswordVisible:boolean = false;
@@ -47,12 +50,13 @@ export class LoginComponent implements OnInit {
         if(data.user.emailVerified){          
           this.handleCancel();
         }else{
-          this.errorMessage = this.authService.errorMessages('auth/email-not-verified');
+          this.message.type='error';
+          this.message.message = this.authService.errorMessages('auth/email-not-verified');
           this.authService.logout().then(()=>{}).catch(error=>console.log(error)); //Se ejecuta esta función porque 'emailAndPasswordAuth guarda una sesión y hay que eliminarla para evitar conflictos.'
         }
       }).catch(error=>{
         console.log(error);
-        this.errorMessage = this.authService.errorMessages(error.code);
+        this.message.message = this.authService.errorMessages(error.code);
       });
       
     }).catch(error=>{
@@ -62,7 +66,10 @@ export class LoginComponent implements OnInit {
 
   handleCancel(): void {    
     this.loginForm.reset();
-    this.errorMessage = '';
+    this.message={
+      type:null,
+      message:null
+    }
     this.toggle.emit(false);
   }
 
@@ -79,6 +86,36 @@ export class LoginComponent implements OnInit {
       console.error(error);
     });
   }  
+
+  facebookAuth(){
+    this.authService.authPersistence(this.keepSessionActive).then(()=>{
+      this.authService.facebookAuth().then(data=>{
+
+        if(data.user.emailVerified){
+          this.handleCancel();
+        }else{
+          /* Envío de correo de validación */
+          data.user.sendEmailVerification().then(()=>{
+            this.message.type = 'success';
+            this.message.message = `Felicidades ${name}! Usted ha sido registrado exitosamente. Le enviaremos un correo para que pueda activar su cuenta.`;  
+          }).catch(error=>{
+            console.log(error);
+          })
+          /* Envío de correo de validación */
+          this.authService.logout().then(()=>{}).catch(error=>console.log(error)); //Se ejecuta esta función porque 'emailAndPasswordAuth guarda una sesión y hay que eliminarla para evitar conflictos.'
+        }      
+        
+      }).catch(error=>{
+        console.error(error);
+        this.message.type = 'error';
+        this.message.message = this.authService.errorMessages(error.code);
+        
+      })
+    }).catch(error=>{
+      console.error(error);
+    })
+    
+  }
 
   forgotPasswordToggle(show:boolean){
     this.forgotPasswordVisible = show;
