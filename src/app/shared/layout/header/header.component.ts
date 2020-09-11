@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit {
   changePasswordVisible:boolean = false;
   /* Modals */  
 
-
   displayName:string;  
+  authProvider:string = '';
 
   constructor(private authService:AuthService, private router:Router) { }
 
@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
     this.authService.verifySession().subscribe(data=>{
       this.userLogged = false;
       if(data != null){
+        this.authProvider = data.providerData[0].providerId;
         this.userLogged = data.emailVerified; 
         this.displayName = data.displayName;
       }

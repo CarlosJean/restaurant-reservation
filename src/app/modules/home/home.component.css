@@ -20,6 +20,10 @@
     font-size: 2vw;
 }
 
+#slcSearch{
+    width: 100%;
+}
+
 #slcCity{
     width: 100%;
 }
@@ -30,7 +34,6 @@
     margin: 1% 0px;
     padding: 2%;
     border-radius: 10px;
-    /* height: 300px; */
 }
 
 nz-card{

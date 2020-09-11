@@ -10,7 +10,7 @@
             <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu>
                   <li nz-menu-item><a [routerLink]="['/reservation/my-reservations']"><i nz-icon nzType="ordered-list" nzTheme="outline"></i> Mis reservaciones</a></li>
-                  <li nz-menu-item (click)=changePasswordToggle()><i nz-icon nzType="edit" nzTheme="outline"></i>Modificar mi contraseña</li>
+                  <li nz-menu-item (click)=changePasswordToggle() *ngIf="authProvider=='password'"><i nz-icon nzType="edit" nzTheme="outline"></i>Modificar mi contraseña</li>
                   <li nz-menu-item (click)=logoutAlert()><i nz-icon nzType="logout" nzTheme="outline"></i>Cerrar Sesión</li>
                 </ul>
             </nz-dropdown-menu>

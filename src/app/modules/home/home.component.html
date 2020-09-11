@@ -5,8 +5,21 @@
         </div>
         <div nz-row nzJustify="center" nzGutter="12">
             <div nz-col nzSm="24" nzMd="24">
+                <!-- <nz-select
+                nzShowSearch
+                nzServerSearch
+                nzPlaceHolder="input search text"
+                [(ngModel)]="selectedValue"
+                [nzShowArrow]="false"
+                [nzFilterOption]="nzFilterOption"
+                (nzOnSearch)="search($event)"
+                id=slcSearch
+                (keyup.enter)="inputSearch($event.target)"
+                >
+                <nz-option *ngFor="let o of listOfOption" [nzLabel]="o" [nzValue]="o"> </nz-option>
+                </nz-select> -->
                 <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-                    <input #searchInput type="text" nz-input placeholder="Ej. Little Caesar San Isidro" (keyup.enter)="inputSearch($event.target.value)"/>
+                    <input #searchInput type="text" nz-input placeholder="Ej. Lolita restaurant" (keyup.enter)="inputSearch($event.target.value)"/>
                 </nz-input-group>
                 <ng-template #suffixIconButton>
                     <button nz-button nzType="primary" (click)=inputSearch(searchInput.value) nzSearch><i nz-icon nzType="search"></i></button>

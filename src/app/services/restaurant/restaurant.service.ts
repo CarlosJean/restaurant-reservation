@@ -30,5 +30,8 @@ export class RestaurantService {
     return this.http.get(restaurantUrl);
   }
 
+  /* search(name:string):Observable<any>{
+    return this.http.get(this.url+'/api/restaurants?per_page=5&name='+name+'&page=1');
+  } */
   
 }

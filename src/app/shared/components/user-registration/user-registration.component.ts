@@ -58,6 +58,7 @@ export class UserRegistrationComponent implements OnInit {
         data.user.sendEmailVerification().then(()=>{
           this.successfulRegistration = true;
           this.successMessage = `Felicidades ${name}! Usted ha sido registrado exitosamente. Le enviaremos un correo para que pueda activar su cuenta.`
+          this.authService.logout().then(()=>{}).catch(error=>console.error(error)); //Se elimina la sesión creada en la función 'createUserWithEmailAndPassword'.
         }).catch(error=>{
           console.log(error);
         })

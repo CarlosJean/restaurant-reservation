@@ -11,7 +11,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import {NgxPaginationModule} from 'ngx-pagination'; 
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @NgModule({

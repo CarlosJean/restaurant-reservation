@@ -55,7 +55,8 @@ export class LoginComponent implements OnInit {
           this.authService.logout().then(()=>{}).catch(error=>console.log(error)); //Se ejecuta esta función porque 'emailAndPasswordAuth guarda una sesión y hay que eliminarla para evitar conflictos.'
         }
       }).catch(error=>{
-        console.log(error);
+        console.error(error);
+        this.message.type = 'error';
         this.message.message = this.authService.errorMessages(error.code);
       });
       
@@ -114,6 +115,16 @@ export class LoginComponent implements OnInit {
     }).catch(error=>{
       console.error(error);
     })
+    
+  }
+
+  microsoftAuth(){
+    this.authService.authPersistence(this.keepSessionActive).then(data=>{
+      console.log(data);
+      this.authService.microsoftAuth().then(microsoftData=>console.log(microsoftData)).then(error=>console.error(error));
+    }).catch(error=>{
+      console.error(error);
+    });
     
   }
 

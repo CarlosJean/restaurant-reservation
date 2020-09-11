@@ -25,6 +25,11 @@ export class AuthService {
     return this.auth.signInWithPopup(new auth.FacebookAuthProvider());
   }
 
+  microsoftAuth(){
+    let microsoftProvider = new auth.OAuthProvider('microsoft.com');
+    return this.auth.signInWithPopup(microsoftProvider);
+  }
+
   emailAndPasswordAuth(email:string, password:string){
     return this.auth.signInWithEmailAndPassword(email,password);
   }
@@ -63,8 +68,13 @@ export class AuthService {
 
     return errorMessage;
   }
+
   createUserWithEmailAndPassword(email:string,password:string){
     return this.auth.createUserWithEmailAndPassword(email,password);
+  }
+
+  authProvider(){
+    return this.auth.user;
   }
 }
 

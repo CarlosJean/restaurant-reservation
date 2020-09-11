@@ -17,6 +17,9 @@ export class HomeComponent implements OnInit {
   restaurants:any[];
   loading = false;
   
+  /* selectedValue = null;
+  listOfOption: Array<string> = [];
+  nzFilterOption = () => true; */
   constructor(private restaurantService:RestaurantService) { }
 
   ngOnInit(): void { 
@@ -24,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
   
   inputSearch(value:string){
-    
+
     if(value!=''){
       this.loading = true;
       this.restaurantService
@@ -45,5 +48,19 @@ export class HomeComponent implements OnInit {
         this.loading = false;
       });
   }
+
+  /* search(value: string) {
+    //this.restaurantService.search(value);
+    if(value != ''/*  || value!= undefined || value!=null ){
+      this.restaurantService.search(value).subscribe(data => {
+        const listOfOption: Array<string> = [];
+        data.restaurants.forEach(item => {
+          listOfOption.push(item.name);
+        });
+        this.listOfOption = listOfOption;
+      })
+      
+    }
+  } */
 
 }

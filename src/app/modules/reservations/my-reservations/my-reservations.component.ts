@@ -39,7 +39,7 @@ export class MyReservationsComponent implements OnInit {
           }).catch(error=>{
             console.error(error);
           });
-        }).catch(() => console.log('Oops errors!'))
+        }).catch((warn) => console.warn(warn))
     });
     
   }
