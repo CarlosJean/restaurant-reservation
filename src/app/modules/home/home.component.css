@@ -45,3 +45,9 @@ pagination-controls {
 	justify-content: center;
 	margin-top: 2%;
 }
+
+#noRestaurants{
+    text-align: center;
+    font-size: 20px;
+}
+

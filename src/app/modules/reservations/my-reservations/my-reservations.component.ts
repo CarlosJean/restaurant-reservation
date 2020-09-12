@@ -31,9 +31,11 @@ export class MyReservationsComponent implements OnInit {
   }
 
   cancelReservation(reservationId:string){
+
+    let reservation = this.reservations.filter((reservation=>reservation.id == reservationId))[0];
     this.confirmModal = this.modal.confirm({
       nzTitle: 'Estás a punto de cancelar una reservación.',
-      nzContent: `¿Estás segur@ que deseas cancelar esta reservación?`,
+      nzContent: `¿Estás segur@ que deseas cancelar esta reservación en ${reservation.restaurant.name}?`,
       nzOkText:'Sí',
       nzCancelText: 'No',
       nzOnOk: () =>

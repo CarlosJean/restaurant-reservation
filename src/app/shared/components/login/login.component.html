@@ -31,17 +31,19 @@
     <a nz-button nzType=link (click)=forgotPasswordToggle(true) nz-col nzSpan=8 id=forgotMyPasswordLink>Olvidé mi contraseña</a>
   </div>
   <div nz-col nzSpan=24>
-    <label id="accessWith">Acceder con: </label>
-    <button nz-button (click)="googleAuth()" title=Google>
-      <img src="/assets/google-logo.png" height="100%" width="100%"/>
-    </button>
-    <button nz-button (click)="facebookAuth()" title=Facebook>      
-      <img src="/assets/facebook-logo.png" height="100%" width="100%"/>
-    </button>
-    <!-- Se desactivó el logueo con microsoft porque solo admite cuentas educativas o cuenta laboral -->
-    <!-- <button nz-button (click)="microsoftAuth()" title=Microsoft>      
-      <img src="/assets/microsoft-logo.png" height="100%" width="100%"/>
-    </button> -->
+    <div nz-row nzJustify=start>
+      <label id="accessWith" nz-col nzSm=24 nzMd=6>Acceder con: </label>
+      <button nz-button (click)="googleAuth()" title=Google nz-col nzSpan=3>
+        <img src="/assets/google-logo.png" height="100%" width="100%"/>
+      </button>
+      <button nz-button (click)="facebookAuth()" title=Facebook nz-col nzSpan=3>      
+        <img src="/assets/facebook-logo.png" height="100%" width="100%"/>
+      </button>
+      <!-- Se desactivó el logueo con microsoft porque solo admite cuentas educativas o cuenta laboral -->
+      <!-- <button nz-button (click)="microsoftAuth()" title=Microsoft>      
+        <img src="/assets/microsoft-logo.png" height="100%" width="100%"/>
+      </button> -->
+    </div>
   </div>
 </ng-template>
 <!-- Modal del login -->

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 /*   cities:any[];
   res:{count:number,data:any[]}; */
   p: number = 1;
-  restaurants:any[];
+  restaurants:any[] = [];
   loading = false;
   
   /* selectedValue = null;
@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
       .subscribe(restaurants=>{
         this.restaurants = restaurants.restaurants;
         this.loading = false;
+        console.log(this.restaurants.length);
       });
     //}
   }

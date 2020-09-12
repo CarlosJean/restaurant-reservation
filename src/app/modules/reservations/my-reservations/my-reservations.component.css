@@ -54,3 +54,9 @@ nz-list-item a{
 #reservationDate{
     opacity: 0.6;
 }
+
+nz-list-empty{
+    color: white;
+    opacity: 0.5;
+    font-size: 18px;
+}
