@@ -91,7 +91,6 @@ export class ReservationComponent implements OnInit {
   private resetForm(){
     /* Ocultar modal y Limpiar datos */
     this.hideModal();
-    //this.reservation.people = 1;
     this.timeDefaultValue = setHours(this.today,this.today.getHours()+2);
 
     this.reservationForm = new FormGroup({
