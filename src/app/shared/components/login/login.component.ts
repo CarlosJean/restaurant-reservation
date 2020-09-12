@@ -5,7 +5,9 @@ import {AuthService} from '../../../services/auth/auth.service';
 /* Modal */
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 /* Modal */
-
+/* Ng Zorro */
+import { NzMessageService } from 'ng-zorro-antd/message';
+/* Ng Zorro */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   keepSessionActive:boolean = true;
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private messageService:NzMessageService) { }
 
   ngOnInit(): void {
     this.isVisible = false;
@@ -47,7 +49,10 @@ export class LoginComponent implements OnInit {
       let password = this.loginForm.value['password'];
   
       this.authService.emailAndPasswordAuth(email,password).then((data)=>{
-        if(data.user.emailVerified){          
+        if(data.user.emailVerified){  
+          this.messageService.success(`Felicidades ${data.user.displayName}, has accedido exitosamente.`, {
+            nzDuration: 5000
+          });
           this.handleCancel();
         }else{
           this.message.type='error';
@@ -78,6 +83,9 @@ export class LoginComponent implements OnInit {
     this.authService.authPersistence(this.keepSessionActive).then(()=>{
       this.authService.googleAuth().then((userData)=>{
         if(userData.user.uid != null){
+          this.messageService.success(`Felicidades ${userData.user.displayName}, has accedido exitosamente.`, {
+            nzDuration: 5000
+          });
           this.handleCancel();
         }
       }).catch(error=>{
@@ -93,6 +101,9 @@ export class LoginComponent implements OnInit {
       this.authService.facebookAuth().then(data=>{
 
         if(data.user.emailVerified){
+          this.messageService.success(`Felicidades ${data.user.displayName}, has accedido exitosamente.`, {
+            nzDuration: 5000
+          });
           this.handleCancel();
         }else{
           /* Envío de correo de validación */
@@ -109,8 +120,7 @@ export class LoginComponent implements OnInit {
       }).catch(error=>{
         console.error(error);
         this.message.type = 'error';
-        this.message.message = this.authService.errorMessages(error.code);
-        
+        this.message.message = this.authService.errorMessages(error.code);        
       })
     }).catch(error=>{
       console.error(error);

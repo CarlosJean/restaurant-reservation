@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 /* SweetAlert */
-/* import swal from 'sweetalert'; */
 import Swal from 'sweetalert2'
-/* import { map } from 'rxjs/operators'; */
+/* SweetAlert */
 import { Observable } from 'rxjs';
 import { RestaurantService } from '../restaurant/restaurant.service';
 import { AuthService } from '../auth/auth.service';
-/* SweetAlert */
+/* Ng Zorro */
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+/* Ng Zorro */
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
 
-  constructor(private firestore:AngularFirestore,private restaurantService:RestaurantService,private authService:AuthService) { }
+  constructor(private firestore:AngularFirestore,private restaurantService:RestaurantService,private authService:AuthService, private notification:NzNotificationService) { }
 
    add(reservation:any){        
 
@@ -42,10 +43,14 @@ export class ReservationService {
     .doc(reservation.id)
     .set(reservation)
     .then(()=>{
-      Swal.fire({
-        html:`Felicidades! Su reservación ha sido registrada.`,
-        icon:'success'
-      });
+
+      /* Notification */
+      this.notification.blank(
+        'Reservación registrada con éxito!',
+        `¡Felicidades! Su reservación ha sido realizada. Recuerda llegar a tiempo.`/* ,
+        { nzDuration: 10 } */
+      );
+      /* Notification */
 
       /* Limpiar objeto de reservaciones */
       for (let prop in reservation) {
@@ -70,6 +75,10 @@ export class ReservationService {
     .orderBy('reservationDate', 'desc')).valueChanges();
   }
   
+  findReservation(reservationId:string):Observable<any>{
+    return this.firestore.collection('reservation',ref=>ref.where('id','==',reservationId)).valueChanges();
+  }
+
   cancelReservation(reservationId:string){    
     return this.firestore.collection('reservation').doc(reservationId).update({status:'cancelled'});
   }

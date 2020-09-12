@@ -11,11 +11,13 @@
                 <ul nz-menu>
                   <li nz-menu-item><a [routerLink]="['/reservation/my-reservations']"><i nz-icon nzType="ordered-list" nzTheme="outline"></i> Mis reservaciones</a></li>
                   <li nz-menu-item (click)=changePasswordToggle() *ngIf="authProvider=='password'"><i nz-icon nzType="edit" nzTheme="outline"></i>Modificar mi contraseña</li>
-                  <li nz-menu-item (click)=logoutAlert()><i nz-icon nzType="logout" nzTheme="outline"></i>Cerrar Sesión</li>
+                  <li nz-menu-item (click)=logOut()><i nz-icon nzType="logout" nzTheme="outline"></i>Cerrar Sesión</li>                    
                 </ul>
             </nz-dropdown-menu>
             <a nz-col nzXs=6 nzMd=5 *ngIf="!userLogged" (click)=userRegistrationToggle()>Registrarse</a>
-            <button nz-col nzXs=6 nzMd=5 nz-button nzType="default" (click)="toggleLoginModal()" nzGhost *ngIf="!userLogged">Acceder</button>
+            <div nz-col nzXs=6 nzMd=5 id="buttonCol" *ngIf="!userLogged">
+                <button nz-button nzType="default" (click)="toggleLoginModal()" nzGhost><i nz-icon nzType="user" nzTheme="outline"></i>Acceder</button>
+            </div>            
         </div>
     </div>  
 </div>

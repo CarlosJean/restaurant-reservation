@@ -3,6 +3,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-header',
@@ -22,20 +23,29 @@ export class HeaderComponent implements OnInit {
   displayName:string;  
   authProvider:string = '';
 
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(private authService:AuthService, private router:Router, private modal:NzModalService) { }
 
   ngOnInit(): void {
     this.verifySession();
   }
 
   logOut(){
-    this.authService.logout().then(()=>{
-      this.userLogged = false;
-      this.isVisible = false;
-      this.router.navigate(['/home']);
-    }).catch(error=>{
-      console.error(error);
-    });
+    this.modal.confirm({
+      nzTitle: 'Estás a punto de cerrar sesión',
+      nzContent: '¿Está segur@ que desa cerrar sesión?',
+      nzOkText: 'Sí',
+      nzCancelText: 'No',
+      nzOnOk: () => {
+        this.authService.logout().then(()=>{
+          this.userLogged = false;
+          this.isVisible = false;
+          this.router.navigate(['/home']);
+        }).catch(error=>{
+          console.error(error);
+        });
+      }
+    });                            
+    
   }
 
   private verifySession(){

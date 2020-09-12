@@ -4,8 +4,6 @@ import {LoginComponent} from './components/login/login.component'
 import {ReservationComponent} from './components/reservation/reservation.component'
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
-/* import { AppRoutingModule } from '../app-routing.module';
-import { BrowserModule } from '@angular/platform-browser'; */
 
 /* Ng Zorro */
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -20,6 +18,9 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 /* Ng Zorro */
 
 /* Firebase */
@@ -40,8 +41,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
   declarations: [LoginComponent,HeaderComponent,FooterComponent,ReservationComponent, UserRegistrationComponent, PasswordConfirmationDirective, ForgotPasswordComponent],
   imports: [
     CommonModule,
-    /* BrowserModule, */
-    /* AppRoutingModule, */
+    RouterModule,
+
+    /* Ng Zorro */
     NzModalModule,
     NzInputModule,
     NzButtonModule,
@@ -53,16 +55,22 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     NzIconModule,
     NzDropDownModule,
     NzCheckboxModule,
-    RouterModule,
+    NzNotificationModule,
+    NzMessageModule,
+    NzPopconfirmModule,
+    /* Ng Zorro */    
+
+    /* Firebase */
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase),
+    /* Firebase */    
     
     /* Forms module */
     FormsModule,
     ReactiveFormsModule
     /* Forms module */    
   ],
-  exports:[LoginComponent,HeaderComponent,FooterComponent,ReservationComponent,NzFormModule,UserRegistrationComponent,NzCheckboxModule/*,FormsModule,ReactiveFormsModule ,NzGridModule,,NzInputModule,NzInputNumberModule,NzDatePickerModule */],
+  exports:[LoginComponent,HeaderComponent,FooterComponent,ReservationComponent,NzFormModule,UserRegistrationComponent,NzCheckboxModule],
   providers:[MinDateValidatorDirective]
 
 })

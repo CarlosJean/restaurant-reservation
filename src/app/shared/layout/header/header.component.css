@@ -39,3 +39,8 @@ nz-dropdown-menu ul li a{
 	width: 100%;
 	color: rgb(240, 238, 238);
 }
+
+#buttonCol {
+	display: flex;
+	justify-content: center;
+}

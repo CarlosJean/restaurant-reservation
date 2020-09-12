@@ -16,6 +16,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 /* ng Zorro */
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzGridModule,
     NzListModule,
     NzIconModule,
-    NzModalModule 
+    NzModalModule,
+    NzMessageModule 
   ],
   providers:[
     ReservationService

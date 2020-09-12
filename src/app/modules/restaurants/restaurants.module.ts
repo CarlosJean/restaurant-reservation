@@ -10,16 +10,17 @@ import { NzRateModule } from 'ng-zorro-antd/rate';
 /* Forms */
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 /* Forms */
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+/* Ng Zoro */
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-/* import { ReservationComponent } from '../../shared/components/reservation/reservation.component'; */
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+/* Ng Zoro */
 
 /* Google maps */
 import { AgmCoreModule } from '@agm/core';
@@ -44,22 +45,26 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     RestaurantsRoutingModule,
+    FormsModule,
+    FontAwesomeModule,
+    /* Ng Zorro */
     NzGridModule,
     NzRateModule,
-    FormsModule,
     NzIconModule,
-    FontAwesomeModule,
     NzButtonModule,
     NzModalModule,
     NzFormModule,
-    ReactiveFormsModule,
     NzInputModule,
     NzInputNumberModule,
     NzDatePickerModule,
     NzTimePickerModule,
+    /* Ng Zorro */
+    ReactiveFormsModule,
+    /* Angular maps */
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey
     }),
+    /* Angular maps */
     /* AngularFireModule, */
     AngularFireModule.initializeApp(environment.firebase),
     /* SharedModule */

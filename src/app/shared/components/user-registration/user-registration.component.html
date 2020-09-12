@@ -27,18 +27,21 @@
             <nz-form-control>
                 <nz-form-label nzSpan=12 nz-col>Correo electrónico</nz-form-label>
                 <input type="email" nz-input placeholder="Ingrese su correo electrónico" formControlName=email/>
+                <p *ngIf="form.email.touched && form.email.errors!=null && form.email.errors.email" class="controlValidationError">Debe introducir un correo electrónico válido.</p>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control>
                 <nz-form-label nzSpan=12 nz-col>Contraseña</nz-form-label>
-                <input type="password" nz-input placeholder="Ingrese su contraseña" formControlName=password/>
+                <input type="password" nz-input placeholder="Ingrese su contraseña" formControlName=password name=password/>
+                <p *ngIf="form.password.touched && form.password.errors != null && form.password.errors.minlength" class="controlValidationError">La contraseña debe tener al menos 6 caracteres.</p>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control>
                 <nz-form-label nzSpan=12 nz-col>Confirmación de contraseña</nz-form-label>
                 <input type="password" nz-input placeholder="Confirme su contraseña" formControlName=passwordConfirmation/>
+                <p *ngIf="form.passwordConfirmation.touched && form.passwordConfirmation.errors != null && form.passwordConfirmation.errors.minlength" class="controlValidationError">La contraseña debe tener al menos 6 caracteres.</p>
             </nz-form-control>
         </nz-form-item>    
     </form>

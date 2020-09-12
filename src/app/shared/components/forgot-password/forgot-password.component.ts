@@ -15,8 +15,9 @@ export class ForgotPasswordComponent implements OnInit {
 
   /* Forgot password form  */
   forgotPasswordForm = new FormGroup({
-    email:new FormControl('',[Validators.required])
+    email:new FormControl('',[Validators.required,Validators.email])
   });
+  get form() { return this.forgotPasswordForm.controls; }
   /* Forgot password form  */  
 
 /* Messages */
@@ -34,7 +35,7 @@ export class ForgotPasswordComponent implements OnInit {
   handleOk(){
     this.authService.forgotPassword(this.forgotPasswordForm.value['email']).then(()=>{
       this.message.type = 'success';
-      this.message.message = 'Se le ha enviado un correo electrónico.';      
+      this.message.message = 'Se le ha enviado un correo electrónico para que pueda modificar su contraseña.';      
       setTimeout(()=>this.handleCancel(), 3000);
     }).catch(error=>{
       console.error(error);

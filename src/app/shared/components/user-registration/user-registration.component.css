@@ -1,0 +1,7 @@
+.controlValidationError{
+    color: rgb(216, 103, 103);
+}
+
+nz-form-label{
+    font-weight: bold;
+}

@@ -17,10 +17,12 @@ export class UserRegistrationComponent implements OnInit {
   userRegistrationForm = new FormGroup({
     name: new FormControl('',[Validators.required]),
     surname: new FormControl('',[Validators.required]),
-    email: new FormControl('',[Validators.required]),
-    password: new FormControl('',[Validators.required]),
-    passwordConfirmation: new FormControl('',[Validators.required])
+    email: new FormControl('',[Validators.required,Validators.email]),
+    password: new FormControl('',[Validators.required, Validators.minLength(6)]),
+    passwordConfirmation: new FormControl('',[Validators.required, Validators.minLength(6)])
   });
+
+  get form() { return this.userRegistrationForm.controls; }
   /* User registration form */  
 
   /* General error message  */  
@@ -34,8 +36,7 @@ export class UserRegistrationComponent implements OnInit {
 
   constructor(private authService:AuthService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   handleOk(){
     let name = this.userRegistrationForm.get('name').value;
