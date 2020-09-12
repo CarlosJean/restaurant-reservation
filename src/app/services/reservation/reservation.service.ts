@@ -47,8 +47,7 @@ export class ReservationService {
       /* Notification */
       this.notification.blank(
         'Reservación registrada con éxito!',
-        `¡Felicidades! Su reservación ha sido realizada. Recuerda llegar a tiempo.`/* ,
-        { nzDuration: 10 } */
+        `¡Felicidades! Su reservación ha sido realizada. Recuerda llegar a tiempo.`
       );
       /* Notification */
 

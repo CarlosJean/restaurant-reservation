@@ -78,11 +78,9 @@ export class ReservationComponent implements OnInit {
     this.activatedRoute.params.subscribe(param=>{
       this.reservation.restaurantId = param.id;
       this.reservationService.add(this.reservation);
+      this.resetForm();    
     });
-    /* Save data */
-
-    this.resetForm();
-    
+    /* Save data */    
   }
 
   handleCancel():void{
@@ -93,11 +91,11 @@ export class ReservationComponent implements OnInit {
   private resetForm(){
     /* Ocultar modal y Limpiar datos */
     this.hideModal();
-    this.reservation.people = 1;
+    //this.reservation.people = 1;
     this.timeDefaultValue = setHours(this.today,this.today.getHours()+2);
 
     this.reservationForm = new FormGroup({
-      people : new FormControl(this.reservation.people,[Validators.required,Validators.min(1)]),
+      people : new FormControl(1,[Validators.required,Validators.min(1)]),
       date : new FormControl(this.timeDefaultValue,[Validators.required,this.minDateValidator.minDateValidate])
     });
     /* Ocultar modal y Limpiar datos */    
