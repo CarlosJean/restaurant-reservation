@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +76,10 @@ export class AuthService {
 
   authProvider(){
     return this.auth.user;
+  }
+
+  authState(){
+    return this.auth.authState;
   }
 }
 

@@ -2,8 +2,7 @@
 @media only screen and (max-width: 1024px) {
 
 	#restaurantImg {
-        width: 90% !important;
-        top: -16% !important;
+        top: 0% !important;
         height: 45% !important;
     }
 }

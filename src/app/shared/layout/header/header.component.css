@@ -1,3 +1,13 @@
+/* Media querys */
+
+@media only screen and (max-width:1024px){
+	#logo{
+		font-size: 25px;
+	}
+}
+/* Media querys */
+
+
 :host{
 width: 100%;
 }
@@ -5,8 +15,7 @@ width: 100%;
 #logo{
 	font-family: 'great-vibes';
 	color: white;
-	text-align: center;
-	font-size: 1.5vw;
+	text-align: center;	
 	font-weight: 400;
 	letter-spacing: 0.467em;
 }
@@ -44,3 +53,5 @@ nz-dropdown-menu ul li a{
 	display: flex;
 	justify-content: center;
 }
+
+

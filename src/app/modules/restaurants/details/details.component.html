@@ -1,7 +1,7 @@
 <div nz-row nzJustify="center" nzAlign="middle" id="dvContainer">    
-    <div class="dvRestaurantData" nz-col nzSpan="12" >
+    <div class="dvRestaurantData" nz-col nzXm=20 nzSm=16 nzMd=12 >
         <div nz-row>
-            <div nz-col nzSm=24 nzMd=4 id="dvRestaurantImage">
+            <div nz-col nzXs=24 nzSm=20 nzMd=4 id="dvRestaurantImage">
                 <img [src]="restaurant.image_url" id=restaurantImg alt="{{restaurant.name}}">
             </div>
             <div nz-col nzSm=24 nzMd=20>
@@ -11,8 +11,8 @@
                     </div>
                     <div nz-col nzSpan=24>
                         <div nz-row>
-                            <div nz-col nzSm=24 nzMd=12><fa-icon [icon]="faPhone" style="color:white;"></fa-icon><a href="tel:{{restaurant.phone}}" id="phone">{{restaurant.phone}}</a></div>
-                            <div nz-col nzSm=24 nzMd=12>
+                            <div nz-col nzXs=24 nzMd=12><fa-icon [icon]="faPhone" style="color:white;"></fa-icon><a href="tel:{{restaurant.phone}}" id="phone">{{restaurant.phone}}</a></div>
+                            <div nz-col nzXs=24 nzMd=12>
                                 <fa-icon [icon]="faMapMarkerAlt" style="color:red;"></fa-icon> {{restaurant.address}}, {{restaurant.city}} {{restaurant.postal_code}}
                             </div>
                         </div>
