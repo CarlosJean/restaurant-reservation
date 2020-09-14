@@ -30,7 +30,7 @@
     <div nz-col id="dvRestaurants" nzSpan="23">
         <div *ngIf="restaurants.length==0" id=noRestaurants>
             <i nz-icon nzType="question-circle" nzTheme="outline"></i>
-            <p>Lo sentimos, hemos encontrado lo que has buscado.</p>
+            <p>Lo sentimos, no hemos encontrado lo que has buscado.</p>
         </div>
         <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
         <nz-spin [nzSize]="'large'" nzSimple [nzIndicator]="indicatorTemplate" *ngIf="loading"></nz-spin>

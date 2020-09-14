@@ -60,14 +60,14 @@ export class UserRegistrationComponent implements OnInit {
           this.successfulRegistration = true;
           this.successMessage = `Felicidades ${name}! Usted ha sido registrado exitosamente. Le enviaremos un correo para que pueda activar su cuenta.`
           this.authService.logout().then(()=>{}).catch(error=>console.error(error)); //Se elimina la sesión creada en la función 'createUserWithEmailAndPassword'.
-          this.resetForm();
+          setTimeout(()=>this.resetForm(),5000)  ;
         }).catch(error=>{
           console.log(error);
         })
         /* Envío de correo de validación */
 
         this.errorMessage = '';        
-        setTimeout(()=>{this.toggle.emit(false);},3000); 
+        setTimeout(()=>{this.toggle.emit(false);},5000); 
 
       }).catch(error=>{
         this.errorMessage = error.message;
@@ -92,5 +92,9 @@ export class UserRegistrationComponent implements OnInit {
     passwordConfirmation: new FormControl('',[Validators.required])
   });
   /* User registration form */
+
+  this.errorMessage = '';
+  this.successMessage = '';
+  this.successfulRegistration = false;
   }
 }
