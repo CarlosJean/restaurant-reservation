@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ReservationsRoutingModule } from './reservations-routing.module';
-import { ReservationsComponent } from './reservations.component';
 import { MyReservationsComponent } from './my-reservations/my-reservations.component';
 
 /* Firebase */
@@ -20,7 +19,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 /* ng Zorro */
 
 @NgModule({
-  declarations: [/* ReservationsComponent, */ MyReservationsComponent],
+  declarations: [MyReservationsComponent],
   imports: [
     CommonModule,
     ReservationsRoutingModule,

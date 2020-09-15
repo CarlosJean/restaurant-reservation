@@ -31,7 +31,7 @@ import { environment } from 'src/environments/environment';
 
 /* Forms module */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MinDateValidatorDirective } from './directives/min-date-validator.directive';
+import { MinDateValidatorDirective } from './directives/min-date-validator/min-date-validator.directive';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { PasswordConfirmationDirective } from './directives/password-confirmation/password-confirmation.directive';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';

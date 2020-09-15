@@ -15,7 +15,7 @@ import { Validators } from '@angular/forms';
 import setHours from 'date-fns/setHours';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DisabledTimeFn } from 'ng-zorro-antd/date-picker';
-import { MinDateValidatorDirective } from '../../directives/min-date-validator.directive';
+import { MinDateValidatorDirective } from '../../directives/min-date-validator/min-date-validator.directive';
 /* Date */
 
 

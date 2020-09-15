@@ -7,8 +7,8 @@
     </div>
     <div nz-col nzXs=24 nzMd=16 id="menus">
         <div nz-row nzJustify=end nzAlign=middle>
-            <a nz-col nzXs=6 nzMd=5 [routerLink]="['/home']">Inicio</a>            
-            <label nz-dropdown [nzDropdownMenu]="menu" *ngIf="userLogged">{{displayName | titlecase}}<i nz-icon nzType="caret-down" nzTheme="outline"></i></label>
+            <a nz-col nzXs=8 nzSm=8 nzMd=6 [routerLink]="['/home']">Inicio</a>            
+            <label nz-dropdown [nzDropdownMenu]="menu" *ngIf="userLogged" nz-col nzSpan=12 id=lblUsername>{{displayName | titlecase}}<i nz-icon nzType="caret-down" nzTheme="outline"></i></label>
             <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu>
                   <li nz-menu-item><a [routerLink]="['/reservation/my-reservations']"><i nz-icon nzType="ordered-list" nzTheme="outline"></i> Mis reservaciones</a></li>
@@ -16,8 +16,8 @@
                   <li nz-menu-item (click)=logOut()><i nz-icon nzType="logout" nzTheme="outline"></i>Cerrar Sesión</li>                    
                 </ul>
             </nz-dropdown-menu>
-            <a nz-col nzXs=6 nzMd=5 *ngIf="!userLogged" (click)=userRegistrationToggle()>Registrarse</a>
-            <div nz-col nzXs=6 nzMd=5 id="buttonCol" *ngIf="!userLogged">
+            <a nz-col nzXs=8 nzSm=8 nzMd=6 *ngIf="!userLogged" (click)=userRegistrationToggle()>Registrarse</a>
+            <div nz-col nzXs=8 nzSm=8 nzMd=6 id="buttonCol" *ngIf="!userLogged">
                 <button nz-button nzType="default" (click)="toggleLoginModal()" nzGhost><i nz-icon nzType="user" nzTheme="outline"></i>Acceder</button>
             </div>            
         </div>

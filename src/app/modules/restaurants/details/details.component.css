@@ -1,20 +1,34 @@
 /* Responsive breakpoints */
-@media only screen and (max-width: 1024px) {
+
+@media only screen and (max-width: 1361px) {
 
 	#restaurantImg {
-        top: 0% !important;
-        height: 45% !important;
+        top: -10% !important;
     }
 }
 
-@media only screen and (max-width:768px){
+@media only screen and (max-width: 1130px) {
+
+	#restaurantImg {
+        height: 60% !important;    
+    }
+}
+
+@media only screen and (max-width: 1130px) {
+
+	#restaurantImg {
+        top: -2% !important;   
+    }
+}
+
+/* @media only screen and (max-width:768px){
 	#restaurantImg{
 		width: 90% !important;
         top: -10% !important;
         height: 30% !important;
 	}
 }
-
+ */
 @media only screen and (max-width:766px){
 	#restaurantImg{
         position: unset !important;
@@ -24,13 +38,10 @@
     #dvRestaurantData{
         margin-top: 0% !important;
     }
-}
 
-@media only screen and (max-width:766px){
     #dvBtnReserve button{
-        font-size: 10px !important;
+        font-size: 18px !important;
     }
-    
 }
 /* Responsive breakpoints */
 

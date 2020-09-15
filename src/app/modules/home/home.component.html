@@ -34,10 +34,10 @@
         </div>
         <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
         <nz-spin [nzSize]="'large'" nzSimple [nzIndicator]="indicatorTemplate" *ngIf="loading"></nz-spin>
-        <div nz-row [nzGutter]="[16, 24]">
-            <div nz-col nzSm="12" nzMd="6" *ngFor="let restaurant of restaurants | paginate: { itemsPerPage: 8, currentPage: p}" class="height-20">
+        <div nz-row [nzGutter]="[8, 8]" nzJustify=center>
+            <div nz-col nzSm=12 nzSm="12" nzMd="6" *ngFor="let restaurant of restaurants | paginate: { itemsPerPage: 8, currentPage: p}" class="h-5">
                 <a [routerLink]="['/restaurants/details/',restaurant.id]">
-                    <nz-card nzHoverable [nzCover]="coverTemplate" style="width: 100%;">
+                    <nz-card nzHoverable [nzCover]="coverTemplate">
                         <nz-card-meta nzTitle="{{restaurant.name}}" nzDescription="{{restaurant.address}}, {{restaurant.city}} {{restaurant.postal_code}}"></nz-card-meta>
                         <nz-rate  [nzCount]="5" [ngModel]="restaurant.price" nzDisabled></nz-rate>
                     </nz-card>

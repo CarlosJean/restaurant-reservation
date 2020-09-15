@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { ValidatorFn, AbstractControl, AsyncValidatorFn } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 
 @Directive({
   selector: '[appMinDateValidator]'
