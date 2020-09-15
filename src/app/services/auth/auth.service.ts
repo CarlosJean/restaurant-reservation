@@ -10,9 +10,7 @@ export class AuthService {
 
   constructor(private auth:AngularFireAuth) { }
 
-  verifySession(){
-    return this.auth.authState;
-  }
+  verifySession= ()=>{ return this.auth.authState;}
 
   authPersistence(keepSessionActive:boolean = true){
     return (keepSessionActive) ? this.auth.setPersistence('session') : this.auth.setPersistence('none')
@@ -35,9 +33,7 @@ export class AuthService {
     return this.auth.signInWithEmailAndPassword(email,password);
   }
 
-  logout(){
-    return this.auth.signOut();
-  }
+  logout = ()=>{return this.auth.signOut();}
 
   forgotPassword(email:string){
     return this.auth.sendPasswordResetEmail(email);

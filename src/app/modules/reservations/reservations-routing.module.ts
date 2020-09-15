@@ -8,7 +8,7 @@ import {UserLoggedGuard} from '../../guards/user-logged/user-logged.guard';
 
 const routes: Routes = [
   { path: '', component: ReservationsComponent },
-  {path:'my-reservations',component:MyReservationsComponent,canActivate:[UserLoggedGuard]}
+  { path:'my-reservations',component:MyReservationsComponent,canActivate:[UserLoggedGuard]}
 
 ];
 
