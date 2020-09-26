@@ -1,0 +1,22 @@
+:host{    
+    background-image: url(/assets/bodyIII.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#content{
+    height: 100%;
+}
+
+#dvInfo {
+	background: #001529cf;
+	border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 25px;
+}

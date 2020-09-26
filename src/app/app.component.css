@@ -7,6 +7,5 @@ nz-content{
 }
 
 nz-header {
-	display: table;
-	width: 100%;
+	height: auto;
 }

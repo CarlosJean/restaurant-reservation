@@ -35,10 +35,11 @@ import { MinDateValidatorDirective } from './directives/min-date-validator/min-d
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { PasswordConfirmationDirective } from './directives/password-confirmation/password-confirmation.directive';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 /* Forms module */
 
 @NgModule({
-  declarations: [LoginComponent,HeaderComponent,FooterComponent,ReservationComponent, UserRegistrationComponent, PasswordConfirmationDirective, ForgotPasswordComponent],
+  declarations: [LoginComponent,HeaderComponent,FooterComponent,ReservationComponent, UserRegistrationComponent, PasswordConfirmationDirective, ForgotPasswordComponent, PageNotFoundComponent],
   imports: [
     CommonModule,
     RouterModule,

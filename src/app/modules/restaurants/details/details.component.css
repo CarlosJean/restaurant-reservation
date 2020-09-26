@@ -21,14 +21,6 @@
     }
 }
 
-/* @media only screen and (max-width:768px){
-	#restaurantImg{
-		width: 90% !important;
-        top: -10% !important;
-        height: 30% !important;
-	}
-}
- */
 @media only screen and (max-width:766px){
 	#restaurantImg{
         position: unset !important;
